@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
+import {Route, Switch} from "react-router-dom";
+import Navbar from "./components/navbar";
+import Login from "./containers/login"
+import Home from "./containers/home"
+import CreateUser from "./components/create_user"
+import About from "./containers/about"
+import PlantIndex from "./containers/plant_index"
+import CreatePlant from "./containers/create_plant"
+import { connect } from "react-redux";
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  render() {
+    return (
+      <div className="App">
+        {this.props.currentUser ? <Navbar/> : null}
+        <Switch>
+          <Route exact path="/login" component={Login}/>
+          <Route path="/users/create" component={CreateUser}/>
+          <Route path="/about" component ={About}/>
+          <Route path="/plants" component={PlantIndex}/>
+          <Route path="/plants/create" component={CreatePlant}/>
+          <Route path="/" component= {this.props.currentUser ? Home : Login}/>
+        </Switch>
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    currentUser: state.currentUser
+  };
+};
+
+export default connect(mapStateToProps)(App)
