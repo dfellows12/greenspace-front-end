@@ -7,10 +7,9 @@ const Navbar = props => {
     <div className="navbar">
       <Menu className>
         <Menu.Item header>GreenSpace</Menu.Item>
-        <Menu.Item position='right'
+        <Link to="/plants"><Menu.Item position='right'
           name='Add Plant'
-        
-        />
+        /></Link>
         <Menu.Item small position='right'
           name='Create Plant'
 

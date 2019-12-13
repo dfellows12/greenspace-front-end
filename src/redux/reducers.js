@@ -21,11 +21,31 @@ const plantsReducer = (state = [], action) => {
     }
 }
 
+const userPlantsReducer = (state = [], action) => {
+    switch (action.type) {
+        case "ADD_USER_PLANT":
+            if (state.length > 0) {
+            return {
+                ...state,
+                currentUserPlants: [...state.currentUserPlants, action.payload]
+            }}
+            else {
+                return {
+                    ...state,
+                    currentUserPlants: [action.payload]
+                }
+            }
+        default:
+            return state
+    }
+}
+
 
 
 const rootReducer = combineReducers({
     currentUser: userLoginReducer,
-    currentPlants: plantsReducer
+    currentPlants: plantsReducer,
+    currentUserPlants: userPlantsReducer
 })
 
 export default rootReducer

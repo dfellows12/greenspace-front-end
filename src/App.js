@@ -8,9 +8,15 @@ import About from "./containers/about"
 import PlantIndex from "./containers/plant_index"
 import CreatePlant from "./containers/create_plant"
 import { connect } from "react-redux";
+import { fetchingPlants, fetchingUserPlants } from './redux/actions.js';
 import './App.css';
 
 class App extends React.Component {
+
+  componentDidMount() {
+    this.props.fetchingPlants()
+    // this.props.fetchingUserPlants()
+  }
 
   render() {
     return (
@@ -35,4 +41,10 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps = (dispatch) => ({
+    fetchingPlants: () => dispatch(fetchingPlants()),
+    // fetchingUserPlants: () => dispatch(fetchingUserPlants())
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
