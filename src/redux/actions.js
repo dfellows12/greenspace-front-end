@@ -87,7 +87,7 @@ function addUserPlant(plantInfo) {
     return {type: "ADD_USER_PLANT", payload: plantInfo}
 }
 
-function creatingPlant(plantInfo) {
+function creatingPlant(info) {
     return (dispatch) => {
         fetch(`http://localhost:3000/plants`, {
             method: "POST",
@@ -95,14 +95,14 @@ function creatingPlant(plantInfo) {
                 "Content-Type": "application/json",
                 Accept: "application/json"
             },
-            body: JSON.stringify({
-                plant: plantInfo
-            })
+            body: JSON.stringify({info})
         })
         .then(resp => resp.json())
         .then(result => console.log(result))
     }
 }
+
+
 
 function addingUserPlant(info, userId){
     return (dispatch) => {
@@ -119,7 +119,6 @@ function addingUserPlant(info, userId){
       })
       .then(resp => resp.json())
       .then(result => {
-          debugger
           console.log(result)})
     }
 }

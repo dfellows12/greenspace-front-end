@@ -19,6 +19,8 @@ const plantsReducer = (state = [], action) => {
     switch (action.type) {
         case "FETCH_PLANTS":
             return action.payload
+        case "CREATE_PLANT":
+            return state
         default:
             return state
     }

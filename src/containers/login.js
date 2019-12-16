@@ -18,6 +18,8 @@ class Login extends Component {
         return this.props.loggingUserInfo(info);
       };
 
+      
+
     render() {
         return (
                 <div className="login">
@@ -31,7 +33,6 @@ class Login extends Component {
                                 name="username"
                                 onChange={e => this.setState({name: e.target.value})}
                                 placeholder='Username' />
-    
                             </Form.Field>
                             <Form.Field>
                                 <label>Password</label>
@@ -51,6 +52,6 @@ class Login extends Component {
 
 const mapDispatchToProps = dispatch => ({
     loggingUserInfo: (info) => {dispatch(loggingUser(info))}
-  });
+});
 
 export default connect(null, mapDispatchToProps)(Login);
