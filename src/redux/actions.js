@@ -97,7 +97,7 @@ function addingUserPlant(info, userId){
         })
       })
       .then(resp => resp.json())
-      .then(result => dispatch(addUserPlant(result)))
+      .then(result => console.log(result))
     }
 }
   

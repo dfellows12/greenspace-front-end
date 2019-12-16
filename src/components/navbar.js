@@ -10,10 +10,9 @@ const Navbar = props => {
         <Link to="/plants"><Menu.Item position='right'
           name='Add Plant'
         /></Link>
-        <Menu.Item small position='right'
+        <Link to="/plants/create">Menu.Item small position='right'
           name='Create Plant'
-
-          
+        </Link>
         />
         <Menu.Item small position='right'
           name='Log out'

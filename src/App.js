@@ -26,8 +26,8 @@ class App extends React.Component {
           <Route exact path="/login" component={Login}/>
           <Route path="/users/create" component={CreateUser}/>
           <Route path="/about" component ={About}/>
-          <Route path="/plants" component={PlantIndex}/>
           <Route path="/plants/create" component={CreatePlant}/>
+          <Route path="/plants" component={PlantIndex}/>
           <Route path="/" component= {this.props.currentUser ? Home : Login}/>
         </Switch>
       </div>
