@@ -53,7 +53,4 @@ const mapDispatchToProps = dispatch => ({
     loggingUserInfo: (info) => {dispatch(loggingUser(info))}
   });
 
-export default connect(
-    null,
-    mapDispatchToProps
-)(Login);
+export default connect(null, mapDispatchToProps)(Login);

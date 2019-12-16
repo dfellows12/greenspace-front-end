@@ -2,6 +2,10 @@ function loginUser(info){
     return {type: "LOGIN_USER", payload: info}
 }
 
+function logUserOut(info){
+    return {type: "LOGOUT_USER"}
+}
+
 function createUser(info){
     return {type: "CREATE_USER", payload: info}
 }
@@ -42,7 +46,7 @@ function loggingUser(info){
       })
     .then(resp => resp.json())
     .then(resp => {
-        if (resp.message === "User not found") {
+        if (resp.message === "User/Password not found") {
             alert("Username/Password invalid")
         }
         else {
@@ -83,6 +87,23 @@ function addUserPlant(plantInfo) {
     return {type: "ADD_USER_PLANT", payload: plantInfo}
 }
 
+function creatingPlant(plantInfo) {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/plants`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify({
+                plant: plantInfo
+            })
+        })
+        .then(resp => resp.json())
+        .then(result => console.log(result))
+    }
+}
+
 function addingUserPlant(info, userId){
     return (dispatch) => {
       fetch(`http://localhost:3000/user_plants`, {
@@ -97,8 +118,10 @@ function addingUserPlant(info, userId){
         })
       })
       .then(resp => resp.json())
-      .then(result => console.log(result))
+      .then(result => {
+          debugger
+          console.log(result)})
     }
 }
   
-export {loggingUser, creatingUser, fetchingPlants, fetchingUserPlants, addingUserPlant}
+export {loggingUser, logUserOut, creatingUser, fetchingPlants, fetchingUserPlants, creatingPlant, addingUserPlant}

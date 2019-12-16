@@ -1,16 +1,19 @@
 import { combineReducers } from "redux";
 
 
-const userLoginReducer = (state = null, action) => {
+const userReducer = (state = null, action) => {
     switch (action.type) {
         case "LOGIN_USER":
             return action.payload;
         case "CREATE_USER":
-            return action.payload; 
+            return action.payload;
+        case "LOGOUT_USER":
+            return null
         default:
             return state;
     }
 };
+
 
 const plantsReducer = (state = [], action) => {
     switch (action.type) {
@@ -43,7 +46,7 @@ const userPlantsReducer = (state = [], action) => {
 
 
 const rootReducer = combineReducers({
-    currentUser: userLoginReducer,
+    currentUser: userReducer,
     currentPlants: plantsReducer,
     currentUserPlants: userPlantsReducer
 })
