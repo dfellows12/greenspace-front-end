@@ -31,7 +31,7 @@ const userPlantsReducer = (state = [], action) => {
         case "FETCH_USER_PLANTS":
             return action.payload
         case "DELETE_USER_PLANT":
-            return 
+            return state.filter(userplant => userplant.id != action.payload.id)
         case "ADD_USER_PLANT":
             if (state.currentUserPlants) {
             return {
