@@ -89,6 +89,10 @@ function addUserPlant(plant) {
     return {type: "ADD_USER_PLANT", payload: plant}
 }
 
+function createPlant(plant) {
+    return {type: "CREATE_PLANT", payload: plant}
+}
+
 function creatingPlant(info) {
     let file = info.image
     return (dispatch) => {
@@ -111,6 +115,7 @@ let uploadFile = (file, plant) => {
         if (error) {
             console.log(error)
         } else {
+            return (dispatch) => {
             fetch(`http://localhost:3000/plants/${plant.id}`, {
                 method: 'PUT',
                 headers: {
@@ -120,8 +125,8 @@ let uploadFile = (file, plant) => {
                 body: JSON.stringify({image: blob.signed_id})
             })
             .then(resp => resp.json())
-            .then(plant => addUserPlant(plant))
-        }
+            .then(plant => dispatch(createPlant(plant)))
+        }}
     })
 }
 
@@ -141,8 +146,7 @@ function addingUserPlant(info, userId){
         })
       })
       .then(resp => resp.json())
-      .then(result => {
-          console.log(result)})
+      .then(userPlant => dispatch(addUserPlant(userPlant)))
     }
 }
   

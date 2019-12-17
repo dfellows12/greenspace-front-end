@@ -29,7 +29,7 @@ const plantsReducer = (state = [], action) => {
 const userPlantsReducer = (state = [], action) => {
     switch (action.type) {
         case "ADD_USER_PLANT":
-            if (state.length > 0) {
+            if (state.currentUserPlants) {
             return {
                 ...state,
                 currentUserPlants: [...state.currentUserPlants, action.payload]
