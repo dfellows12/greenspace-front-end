@@ -1,3 +1,5 @@
+import { DirectUpload } from 'activestorage';
+
 function loginUser(info){
     return {type: "LOGIN_USER", payload: info}
 }
@@ -88,6 +90,7 @@ function addUserPlant(plantInfo) {
 }
 
 function creatingPlant(info) {
+    let file = info.image
     return (dispatch) => {
         fetch(`http://localhost:3000/plants`, {
             method: "POST",
@@ -98,8 +101,29 @@ function creatingPlant(info) {
             body: JSON.stringify({info})
         })
         .then(resp => resp.json())
-        .then(result => console.log(result))
-    }
+        .then(plant =>  uploadFile(file, plant))
+            
+        }
+}
+
+let uploadFile = (file, plant) => {
+    const upload = new DirectUpload(file, 'http://localhost:3000/rails/active_storage/direct_uploads')
+    upload.create((error, blob) => {
+        if (error) {
+            console.log(error)
+        } else {
+            fetch(`http://localhost:3000/plants/${plant.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify({image: blob.signed_id})
+            })
+            .then(resp => resp.json())
+            .then(result => console.log(result))
+        }
+    })
 }
 
 
