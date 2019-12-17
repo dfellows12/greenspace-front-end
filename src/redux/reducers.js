@@ -26,26 +26,22 @@ const plantsReducer = (state = [], action) => {
     }
 }
 
-const userPlantsReducer = (state = [], action) => {
+const userPlantsReducer = (currentUserPlants = [], action) => {
+    
     switch (action.type) {
         case "FETCH_USER_PLANTS":
             return action.payload
         case "DELETE_USER_PLANT":
-            return state.filter(userplant => userplant.id != action.payload.id)
+            return currentUserPlants.filter(userplant => userplant.id != action.payload.id)
         case "ADD_USER_PLANT":
-            if (state.currentUserPlants) {
-            return {
-                ...state,
-                currentUserPlants: [...state.currentUserPlants, action.payload]
-            }}
+            if (currentUserPlants) {
+            return [...currentUserPlants, action.payload]
+            }
             else {
-                return {
-                    ...state,
-                    currentUserPlants: [action.payload]
-                }
+                return [action.payload]
             }
         default:
-            return state
+            return currentUserPlants
     }
 }
 
