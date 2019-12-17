@@ -85,8 +85,8 @@ function fetchingUserPlants() {
     }
 }
 
-function addUserPlant(plantInfo) {
-    return {type: "ADD_USER_PLANT", payload: plantInfo}
+function addUserPlant(plant) {
+    return {type: "ADD_USER_PLANT", payload: plant}
 }
 
 function creatingPlant(info) {
@@ -101,9 +101,8 @@ function creatingPlant(info) {
             body: JSON.stringify({info})
         })
         .then(resp => resp.json())
-        .then(plant =>  uploadFile(file, plant))
-            
-        }
+        .then(plant =>  uploadFile(file, plant))     
+    }
 }
 
 let uploadFile = (file, plant) => {
@@ -121,7 +120,7 @@ let uploadFile = (file, plant) => {
                 body: JSON.stringify({image: blob.signed_id})
             })
             .then(resp => resp.json())
-            .then(result => console.log(result))
+            .then(plant => addUserPlant(plant))
         }
     })
 }
