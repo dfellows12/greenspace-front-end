@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux";
 import { Link } from "react-router-dom"
 import { Button, Form } from 'semantic-ui-react'
-import { loggingUser } from "../redux/actions"
+import { loggingUser } from "../redux/actions/user_actions"
 
 
 class Login extends Component {

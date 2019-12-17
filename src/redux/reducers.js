@@ -28,6 +28,10 @@ const plantsReducer = (state = [], action) => {
 
 const userPlantsReducer = (state = [], action) => {
     switch (action.type) {
+        case "FETCH_USER_PLANTS":
+            return action.payload
+        case "DELETE_USER_PLANT":
+            return 
         case "ADD_USER_PLANT":
             if (state.currentUserPlants) {
             return {

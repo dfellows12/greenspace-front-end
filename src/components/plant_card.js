@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Image, Icon, Button } from 'semantic-ui-react'
-import { addingUserPlant } from '../redux/actions'
+import { addingUserPlant } from '../redux/actions/user_plant_actions'
 import { Link } from "react-router-dom"
 import { connect } from "react-redux";
 

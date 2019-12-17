@@ -1,12 +1,23 @@
 import React, {Component} from 'react'
+import UserPlantCard from '../components/user_plant_card'
+import { connect } from 'react-redux'
 
-export default class Home extends Component {
-    render() {
-        return (
-            <div>
-                Hi
-            </div>
-        )
+const UserPlantIndex = props => {
+    return(
+        <div>
+            <h1>Your Greenspace</h1>
+                <div>{props.currentUserPlants.map(user_plant => ( 
+                    <UserPlantCard user_plant={user_plant}/>
+                ))}</div>
+        </div>
+    )
+}
+
+const mapStateToProps = state => {
+    return {
+      currentUserPlants: state.currentUserPlants
     }
 }
+
+export default connect(mapStateToProps)(UserPlantIndex);
 

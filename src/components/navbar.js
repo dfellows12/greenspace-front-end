@@ -2,13 +2,13 @@ import React from "react";
 import { connect } from 'react-redux'
 import { Input, Menu } from 'semantic-ui-react'
 import { Link, NavLink, withRouter } from "react-router-dom";
-import { logUserOut } from "../redux/actions"
+import { logUserOut } from "../redux/actions/user_actions"
 
 const Navbar = props => {
   return (
     <div className="navbar">
       <Menu className>
-        <Menu.Item header>GreenSpace</Menu.Item>
+        <Link to='/'><Menu.Item header>GreenSpace</Menu.Item></Link>
         <Link to="/plants"><Menu.Item position='right'
           name='Add Plant'
         /></Link>
