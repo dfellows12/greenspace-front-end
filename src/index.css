@@ -30,6 +30,20 @@ body {
   margin-right: 15%
 }
 
+.form-page {
+  margin-top: 3%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.plant-form {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
 h1 {
 	font-family: 'Playfair Display SC';
 	font-size: 50px;

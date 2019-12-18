@@ -41,9 +41,9 @@ handleSubmit = e => {
 
     render() {
     return(
-        <div>
+        <div className="form-page">
+            <Form className="plant-form" onSubmit={event => this.handleSubmit(event)}>
             <h1>Create a plant!</h1>
-            <Form onSubmit={event => this.handleSubmit(event)}>
                 <Form.Field>
                     <label>Name</label>
                     <input placeholder="Name"
@@ -54,18 +54,6 @@ handleSubmit = e => {
                     <label>Scientific name</label>
                     <input 
                         name="scientific_name"
-                        onChange={this.handleOnChange} />
-                </Form.Field>
-                <Form.Field>
-                    <label>Water schedule</label>
-                    <input 
-                        name='water_schedule'
-                        onChange={this.handleOnChange} />
-                </Form.Field>
-                <Form.Field>
-                    <label>Fertilizer schedule</label>
-                    <input 
-                        name='fertilizer_schedule'
                         onChange={this.handleOnChange} />
                 </Form.Field>
                 <Form.Field label='Plant info' control='textarea'
