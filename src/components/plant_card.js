@@ -7,22 +7,18 @@ import { connect } from "react-redux";
 const PlantCard = props => {
     return(
         <div>
-            <Card>
-                <Image src={props.plant.image_url} wrapped ui={false} />
+            <Card className="plant-card">
+                {/* <Image id="plant-image" src={props.plant.image_url} wrapped ui={false} /> */}
                 <Card.Content>
-                    <Card.Header>{props.plant.name}</Card.Header>
+                    <img className="plant-image" src={props.plant.image_url}/>
+                    <div class="divider"></div>
+                    <h2>{props.plant.name}</h2>
                     <Card.Meta>
                         <span className='date'>{props.plant.scientific_name}</span>
                     </Card.Meta>
                     <Card.Description>
-                        {props.plant.info}
+                        
                     </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                    <a>
-                        <Icon name='user' />
-                        22 Friends
-                    </a>
                 </Card.Content>
                 <Button onClick={() => {
                     props.addUserPlant(props.plant, props.currentUser.id)

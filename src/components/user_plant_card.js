@@ -62,15 +62,12 @@ class UserPlantCard extends Component {
                         <span className='date'>{this.props.user_plant.scientific_name}</span>
                     </Card.Meta>
                     <Card.Description>
-                        {this.props.user_plant.info}
+                    
                     </Card.Description>
                     
                 </Card.Content>
                 <Card.Content extra>
-                    <a>
-                        <Icon name='user' />
-                        22 Friends
-                    </a>
+                  
                 </Card.Content>
                 <Button onClick={() => {
                     this.props.deleteUserPlant(this.props.user_plant)

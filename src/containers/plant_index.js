@@ -7,8 +7,8 @@ import PlantCard from '../components/plant_card'
 const PlantIndex = props => {
     return(
         <div>
-            <h1>Add a plant!</h1>
-            <div>{props.currentPlants.map(plant => (
+            <h1>Add a plant</h1>
+            <div className="card-container">{props.currentPlants.map(plant => (
                 
                 <PlantCard plant={plant}/>
                 

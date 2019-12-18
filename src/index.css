@@ -4,9 +4,12 @@ html, body {
 }
 
 body {
- 
- background-color: rgb(140, 171, 164) !important
+  background-color: whiteSmoke;
+  color: white;
+  font-family: "Lato";
+ /* background-color: rgb(140, 171, 164) !important */
 }
+
 .login {
   background: url("./background3.jpeg") no-repeat center center fixed; 
   -webkit-background-size: cover;
@@ -28,16 +31,64 @@ body {
 }
 
 h1 {
-  Font-Family: 'Roboto', Sans-Serif;
-  Font-Size: 35px;
+	font-family: 'Playfair Display SC';
+	font-size: 50px;
+  font-weight: 400;
+  text-align: center;
+  color: black;
 }
 
 h2 {
   Font-Family: 'Droid Serif', Serif;
-  Font-Size: 15px;
+  Font-Size: 30px;
+  color: black;
+  text-align: center;
+}
+
+h3 {
+  
 }
 
 .ui .menu {
   background-color: rgb(215, 200, 189)
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 50px;
+  grid-row-gap: 50px;
+  padding-left: 8%;
+  
+}
+
+.plant-card {
+  
+  background-color: white;
+	border-radius: 1px;
+	box-shadow: 0 0 2px -1px rgba(0, 0, 0, 0.75);
+	height: 450px;
+	
+	max-width: 600px;
+  overflow: hidden;
+ 
+	
+	@media (max-width: 580px) {
+		height: 350px;
+		overflow: visible;
+	}
+}
+
+.plant-image {
+  height: 230px;
+  width: 100%
+}
+
+.divider {
+	background: grey;
+	height: 2px;
+	margin: 25px auto;
+	width: 40px;
 }
 
