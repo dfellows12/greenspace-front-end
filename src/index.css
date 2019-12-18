@@ -55,11 +55,11 @@ h3 {
 
 .card-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 50px;
   grid-row-gap: 50px;
-  padding-left: 8%;
+  margin: 25px 20% 25px 20%;
   
 }
 
