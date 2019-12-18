@@ -23,8 +23,31 @@ class UserPlantCard extends Component {
     render() {
     return(
         <div>
-            <Card>
-            <Form>
+            <Card className="plant-card">
+                <Card.Content>
+                  <img className="plant-image" src={this.props.user_plant.image_url}/>
+                  <div class="divider"></div>
+                  <h2>{this.props.user_plant.name}</h2>
+                  <p className='sci-name'>{this.props.user_plant.scientific_name}</p>  
+                </Card.Content>
+                <Button onClick={() => {
+                    this.props.deleteUserPlant(this.props.user_plant)
+                }}>Edit plant</Button>
+                <Button onClick={() => {
+                    this.props.deleteUserPlant(this.props.user_plant)
+                }}>Remove plant</Button>
+            </Card>
+        </div>
+    )
+}}
+
+const mapDispatchToProps = dispatch => ({
+    deleteUserPlant: (userPlantInfo) => {dispatch(deletingUserPlant(userPlantInfo))}
+})
+
+export default connect(null, mapDispatchToProps)(UserPlantCard)
+
+        {/* <Form>
         <DateInput
           name="date"
           placeholder="Date"
@@ -52,38 +75,5 @@ class UserPlantCard extends Component {
           value={this.state.datesRange}
           iconPosition="left"
           onChange={this.handleChange}
-        />
-      </Form>
-
-                <Image src={this.props.user_plant.image_url} wrapped ui={false} />
-                <Card.Content>
-                    <Card.Header>{this.props.user_plant.name}</Card.Header>
-                    <Card.Meta>
-                        <span className='date'>{this.props.user_plant.scientific_name}</span>
-                    </Card.Meta>
-                    <Card.Description>
-                    
-                    </Card.Description>
-                    
-                </Card.Content>
-                <Card.Content extra>
-                  
-                </Card.Content>
-                <Button onClick={() => {
-                    this.props.deleteUserPlant(this.props.user_plant)
-                }}>Edit plant</Button>
-                <Button onClick={() => {
-                    this.props.deleteUserPlant(this.props.user_plant)
-                }}>Remove plant</Button>
-            </Card>
-        </div>
-    )
-}}
-
-const mapDispatchToProps = dispatch => ({
-    deleteUserPlant: (userPlantInfo) => {dispatch(deletingUserPlant(userPlantInfo))}
-})
-
-export default connect(null, mapDispatchToProps)(UserPlantCard)
-
-
+        /> */}
+      {/* </Form> */}
