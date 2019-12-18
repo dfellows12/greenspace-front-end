@@ -14,7 +14,23 @@ const userReducer = (state = null, action) => {
     }
 };
 
-
+const notesReducer = (currentNotes = [], action) => {
+    switch (action.type) {
+        case "FETCH_NOTES":
+            return action.payload
+        case "DELETE_NOTE":
+            return currentNotes.filter(note => note.id != action.payload.id)
+        case "ADD_NOTE":
+            if (currentNotes) {
+            return [...currentNotes, action.payload]
+            }
+            else {
+                return [action.payload]
+            }
+        default:
+            return currentNotes
+    }
+}
 const plantsReducer = (state = [], action) => {
     switch (action.type) {
         case "FETCH_PLANTS":
@@ -50,7 +66,8 @@ const userPlantsReducer = (currentUserPlants = [], action) => {
 const rootReducer = combineReducers({
     currentUser: userReducer,
     currentPlants: plantsReducer,
-    currentUserPlants: userPlantsReducer
+    currentUserPlants: userPlantsReducer,
+    currentNotes: notesReducer
 })
 
 export default rootReducer
