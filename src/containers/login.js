@@ -24,7 +24,6 @@ class Login extends Component {
         return (
                 <div className="login">
                     <div className="loginform">
-                        <h2>Create your own</h2>
                         <h1>GreenSpace</h1>
                         <Form onSubmit={event => this.handleSubmit(event)}>
                             <Form.Field>

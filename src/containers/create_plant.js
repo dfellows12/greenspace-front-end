@@ -21,6 +21,7 @@ handleOnChange = e => {
     } else {
         this.setState({[e.target.name]: e.target.value})
     }
+    
 }
 
 handleSubmit = e => {
@@ -32,7 +33,8 @@ handleSubmit = e => {
         category: this.state.category,
         image: this.state.image
     }
-    return this.props.creatingPlant(info);
+    this.props.creatingPlant(info);
+    // this.props.history.push('/plants')
 }
 
     render() {

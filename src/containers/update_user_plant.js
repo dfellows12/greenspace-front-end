@@ -1,19 +1,35 @@
 import React, { Component } from "react"
 import { Form, Button } from 'semantic-ui-react'
 import { connect } from "react-redux";
+import { withRouter } from 'react-router-dom'
 import { updatingUserPlant } from "../redux/actions/user_plant_actions"
-
 
 class UpdateUserPlant extends Component {
 
-state = {
-    id: "",
-    name: '',
-    scientific_name: '',
-    plant_info: '',
-    category: '',
-    image: ''
-}
+    state = {
+        id: '',
+        name: '',
+        scientific_name: '',
+        info: '',
+        category: '',
+        image: ''
+    }
+
+    componentDidMount() {
+        fetch(`http://localhost:3000/user_plants/50`)
+        .then(resp => resp.json())
+        .then(user_plant => {
+            this.setState ({
+                id: user_plant.id,
+                name: user_plant.name,
+                scientific_name: user_plant.scientific_name,
+                info: user_plant.info,
+                category: user_plant.category,
+                image: user_plant.image_url
+            })
+        })
+    }
+
 
 handleOnChange = e => {
     if (e.target.name === 'image') {
@@ -26,13 +42,15 @@ handleOnChange = e => {
 handleSubmit = e => {
     e.preventDefault()
     let info = {
+        id: this.state.id,
         name: this.state.name,
         scientific_name: this.state.scientific_name,
-        plant_info: this.state.plant_info,
+        info: this.state.info,
         category: this.state.category,
         image: this.state.image
     }
-    return this.props.updatingUserPlant(info);
+    this.props.updatingUserPlant(info);
+    this.props.history.push('/user_plants')
 }
 
     render() {
@@ -42,27 +60,35 @@ handleSubmit = e => {
             <h1>Edit plant</h1>
                 <Form.Field>
                     <label>Name</label>
-                    <input placeholder="Name"
+                    <input 
+                        value={this.state.name}
                         name="name"
                         onChange={this.handleOnChange}/>
                 </Form.Field>
                 <Form.Field>
                     <label>Scientific name</label>
-                    <input 
+                    <input
+                        value={this.state.scientific_name}
                         name="scientific_name"
                         onChange={this.handleOnChange} />
                 </Form.Field>
-                <Form.Field label='Plant info' control='textarea'
-                    name='plant_info'
+                <Form.Field
+                    value={this.state.info}
+                    label='Info' 
+                    control='textarea'
+                    name='info'
                     onChange={this.handleOnChange} />
-                <Form.Field label='Category' control='select'
+                <Form.Field 
+                    value={this.state.category}
+                    label='Category' 
+                    control='select'
                     name='category'
                     onChange={this.handleOnChange}>
                     <option value='flowering'>Flowering</option>
                     <option value='foliage'>Foliage</option>
                     <option value='succulent and cacti'>Succulent and Cacti</option>
                 </Form.Field>
-                <Form.Field>
+                <Form.Field value={this.state.image_url}>
                     <input type="file" name='image'
                     onChange={this.handleOnChange} />
                 </Form.Field>
@@ -77,4 +103,4 @@ const mapDispatchToProps = dispatch => ({
     updatingUserPlant: (info) => {dispatch(updatingUserPlant(info))}
   });
 
-export default connect(null, mapDispatchToProps)(UpdateUserPlant)
+export default withRouter(connect(null, mapDispatchToProps)(UpdateUserPlant))

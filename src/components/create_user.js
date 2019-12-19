@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import { connect } from "react-redux";
-import { Link } from "react-router-dom"
 import { Button, Form } from 'semantic-ui-react'
 import { creatingUser } from "../redux/actions/user_actions"
 
@@ -19,7 +18,7 @@ class CreateUser extends Component {
         e.preventDefault();
         let info = {name: this.state.name, password: this.state.password, email: this.state.email, phone_number: this.state.phone_number}
         this.props.creatingUserInfo(info);
-        this.props.history.push('/about')
+        this.props.history.push('/plants')
 
       };
 

@@ -74,7 +74,8 @@ function updatingUserPlant(userplant) {
               })
             })
         .then(resp => resp.json())
-        .then(userPlant => dispatch(updateUserPlant(userPlant)))
+        .then(userPlant => {
+            dispatch(updateUserPlant(userPlant))})
     }
 }
   

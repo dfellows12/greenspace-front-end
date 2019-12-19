@@ -32,8 +32,8 @@ class App extends React.Component {
           <Route path="/about" component ={About}/>
           <Route path="/plants/create" component={CreatePlant}/>
           <Route path="/plants" component={PlantIndex}/>
-          <Route exact path="/user_plants/:id/edit" render={() => {
-            return <UpdateUserPlant />}}/>
+          <Route exact path="/user_plants/:id/edit" render={(props) => {
+            return <UpdateUserPlant id={props.match.params.id}/>}}/>
           <Route path="/" component= {this.props.currentUser ? Home : Login}/>
         </Switch>
       </div>

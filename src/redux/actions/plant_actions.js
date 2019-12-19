@@ -15,6 +15,7 @@ function fetchingPlants() {
 }
 
 function createPlant(plant) {
+    debugger
     return {type: "CREATE_PLANT", payload: plant}
 }
 
@@ -29,7 +30,7 @@ let uploadFile = (file, plant) => {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json',
+                    Accept: 'application/json',
                 },
                 body: JSON.stringify({image: blob.signed_id})
             })

@@ -23,6 +23,8 @@ class UserPlantCard extends Component {
       return this.props.creatingNote(info);
     }
 
+    handleUpdate
+
     render() {
     return(
         <div>
