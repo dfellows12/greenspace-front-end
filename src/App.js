@@ -7,6 +7,7 @@ import CreateUser from "./components/create_user"
 import About from "./containers/about"
 import PlantIndex from "./containers/plant_index"
 import CreatePlant from "./containers/create_plant"
+import UpdateUserPlant from "./containers/update_user_plant"
 import { connect } from "react-redux";
 import { fetchingUserPlants } from "./redux/actions/user_plant_actions"
 import { fetchingPlants } from "./redux/actions/plant_actions"
@@ -31,6 +32,8 @@ class App extends React.Component {
           <Route path="/about" component ={About}/>
           <Route path="/plants/create" component={CreatePlant}/>
           <Route path="/plants" component={PlantIndex}/>
+          <Route exact path="/user_plants/:id/edit" render={() => {
+            return <UpdateUserPlant />}}/>
           <Route path="/" component= {this.props.currentUser ? Home : Login}/>
         </Switch>
       </div>

@@ -56,5 +56,26 @@ function addingUserPlant(info, userId){
       .then(userPlant => dispatch(addUserPlant(userPlant)))
     }
 }
+
+function updateUserPlant(userplant) {
+    return {type: "UPDATE_USER_PLANT", payload: userplant}
+}
+
+function updatingUserPlant(userplant) {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/user_plants/${userplant.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+              },
+              body: JSON.stringify({
+                  userplant: userplant
+              })
+            })
+        .then(resp => resp.json())
+        .then(userPlant => dispatch(updateUserPlant(userPlant)))
+    }
+}
   
-export {fetchingUserPlants, addingUserPlant, deletingUserPlant}
+export {fetchingUserPlants, addingUserPlant, deletingUserPlant, updatingUserPlant}

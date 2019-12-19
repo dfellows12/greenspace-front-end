@@ -1,18 +1,19 @@
 import React, { Component } from "react"
 import { Form, Button } from 'semantic-ui-react'
 import { connect } from "react-redux";
-import { creatingPlant } from "../redux/actions/plant_actions"
+import { updatingUserPlant } from "../redux/actions/user_plant_actions"
 
 
-class CreatePlant extends Component {
+class UpdateUserPlant extends Component {
+
 state = {
+    id: "",
     name: '',
     scientific_name: '',
     plant_info: '',
     category: '',
     image: ''
 }
-
 
 handleOnChange = e => {
     if (e.target.name === 'image') {
@@ -31,14 +32,14 @@ handleSubmit = e => {
         category: this.state.category,
         image: this.state.image
     }
-    return this.props.creatingPlant(info);
+    return this.props.updatingUserPlant(info);
 }
 
     render() {
     return(
         <div className="form-page">
             <Form className="plant-form" onSubmit={event => this.handleSubmit(event)}>
-            <h1>Create a plant!</h1>
+            <h1>Edit plant</h1>
                 <Form.Field>
                     <label>Name</label>
                     <input placeholder="Name"
@@ -73,7 +74,7 @@ handleSubmit = e => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    creatingPlant: (info) => {dispatch(creatingPlant(info))}
+    updatingUserPlant: (info) => {dispatch(updatingUserPlant(info))}
   });
 
-export default connect(null, mapDispatchToProps)(CreatePlant)
+export default connect(null, mapDispatchToProps)(UpdateUserPlant)

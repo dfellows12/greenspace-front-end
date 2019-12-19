@@ -3,7 +3,7 @@ import { Form, Modal, Header, Card, Image, Icon, Button } from 'semantic-ui-reac
 import { Link } from "react-router-dom"
 import { connect } from "react-redux";
 import { deletingUserPlant } from '../redux/actions/user_plant_actions'
-import { fetchingNotes, creatingNote, deletingNote } from '../redux/actions/note_actions'
+import { creatingNote } from '../redux/actions/note_actions'
 import Note from './note'
 
 class UserPlantCard extends Component {
@@ -57,19 +57,19 @@ class UserPlantCard extends Component {
                   </Modal.Content>
                 </Modal>
                 <Button onClick={() => {
-                    this.props.deleteUserPlant(this.props.user_plant)
-                }}>Edit plant</Button>
-                <Button onClick={() => {
-                    this.props.deleteUserPlant(this.props.user_plant)
+                    this.props.deletingUserPlant(this.props.user_plant)
                 }}>Remove plant</Button>
+                <Link to={`/user_plants/${this.props.user_plant.id}/edit`}><Button>Update plant</Button></Link>
             </Card>
         </div>
     )
 }}
 
+
+
 const mapDispatchToProps = dispatch => ({
-    deleteUserPlant: (userPlantInfo) => {dispatch(deletingUserPlant(userPlantInfo))},
-    creatingNote: (noteInfo) => {dispatch(creatingNote(noteInfo))},
+    deletingUserPlant: (userPlant) => {dispatch(deletingUserPlant(userPlant))},
+    creatingNote: (noteInfo) => {dispatch(creatingNote(noteInfo))}
 })
 
 const mapStateToProps = state => {
