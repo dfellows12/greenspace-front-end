@@ -20,7 +20,7 @@ const notesReducer = (currentNotes = [], action) => {
             return action.payload
         case "DELETE_NOTE":
             return currentNotes.filter(note => note.id != action.payload.id)
-        case "ADD_NOTE":
+        case "CREATE_NOTE":
             if (currentNotes) {
             return [...currentNotes, action.payload]
             }

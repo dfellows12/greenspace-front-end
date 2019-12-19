@@ -10,6 +10,7 @@ import CreatePlant from "./containers/create_plant"
 import { connect } from "react-redux";
 import { fetchingUserPlants } from "./redux/actions/user_plant_actions"
 import { fetchingPlants } from "./redux/actions/plant_actions"
+import { fetchingNotes } from "./redux/actions/note_actions"
 import './App.css';
 
 class App extends React.Component {
@@ -17,6 +18,7 @@ class App extends React.Component {
   componentDidMount() {
     this.props.fetchingPlants()
     this.props.fetchingUserPlants()
+    this.props.fetchingNotes()
   }
 
   render() {
@@ -43,8 +45,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchingPlants: () => dispatch(fetchingPlants()),
-    fetchingUserPlants: () => dispatch(fetchingUserPlants())
+  fetchingPlants: () => dispatch(fetchingPlants()),
+  fetchingUserPlants: () => dispatch(fetchingUserPlants()),
+  fetchingNotes: () => dispatch(fetchingNotes())
 })
 
 

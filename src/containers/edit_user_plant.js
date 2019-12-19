@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import { Form, Button } from 'semantic-ui-react'
-import { Link } from "react-router-dom"
 import { connect } from "react-redux";
 import { creatingPlant } from "../redux/actions/plant_actions"
 

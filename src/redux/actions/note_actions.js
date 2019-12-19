@@ -12,8 +12,8 @@ function fetchingNotes() {
     }
 }
 
-function addNote(note) {
-    return {type: "ADD_NOTE", payload: note}
+function createNote(note) {
+    return {type: "CREATE_NOTE", payload: note}
 }
 
 function deleteNote(note) {
@@ -37,7 +37,7 @@ function deletingNote(note){
     }
 }
 
-function addingNote(note, userPlantId, userId){
+function creatingNote(note, userPlantId, userId){
     return (dispatch) => {
       fetch(`http://localhost:3000/notes`, {
         method: "POST",
@@ -46,14 +46,15 @@ function addingNote(note, userPlantId, userId){
           Accept: "application/json"
         },
         body: JSON.stringify({
-            userPlantId: userPlantId,
-            userId: userId,
+            user_plant_id: userPlantId,
+            user_id: userId,
             note: note
         })
       })
       .then(resp => resp.json())
-      .then(note => dispatch(addNote(note)))
+      .then(note => {
+          dispatch(createNote(note))})
     }
 }
 
-export {fetchingNotes, addingNote, deletingNote}
+export {fetchingNotes, creatingNote, deletingNote}
