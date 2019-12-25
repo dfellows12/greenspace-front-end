@@ -82,7 +82,7 @@ h3 {
   background-color: white;
 	border-radius: 1px;
 	box-shadow: 0 0 2px -1px rgba(0, 0, 0, 0.75);
-	height: 450px;
+	height: 600px;
 	
 	max-width: 600px;
   overflow: hidden;
@@ -106,3 +106,6 @@ h3 {
 	width: 40px;
 }
 
+.date-dropdown {
+  overflow: scroll;
+}
