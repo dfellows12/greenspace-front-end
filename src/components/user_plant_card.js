@@ -4,8 +4,7 @@ import { Link } from "react-router-dom"
 import { connect } from "react-redux";
 import { deletingUserPlant } from '../redux/actions/user_plant_actions'
 import { creatingNote } from '../redux/actions/note_actions'
-import SemanticDatepicker from 'react-semantic-ui-datepickers';
-import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
+import { creatingWatering } from '../redux/actions/watering_actions'
 import Note from './note'
 
 class UserPlantCard extends Component {
@@ -15,6 +14,9 @@ class UserPlantCard extends Component {
     wateringSchedule: "",
     fertilizingSchedule: ""
 }
+    addDays = (theDate, days) => {
+      return new Date(theDate.getTime() + days*24*60*60*1000)
+    }
 
     handleSubmit = (event) => {
       event.preventDefault()
@@ -27,13 +29,22 @@ class UserPlantCard extends Component {
       return this.props.creatingNote(info);
     }
 
-    handleDateChange = (event) => {
+    handleDaySubmit = (event) => {
       event.preventDefault()
+      let schedule = this.addDays(new Date(), this.state.wateringSchedule)
       let info = {
-        wateringSchedule: this.state.wateringSchedule,
-        fertilizingSchedule: this.state.fertilizingSchedule
+        wateringSchedule: schedule,
+        userId: this.props.currentUser.id,
+        userPlantId: this.props.user_plant.id
       }
+      return this.props.creatingWatering(info)
     }
+
+    handleWatering = (event) => {
+      
+    }
+
+
 
     render() {
     return(
@@ -46,19 +57,19 @@ class UserPlantCard extends Component {
                   <p className='sci-name'>{this.props.user_plant.scientific_name}</p>
                  
                     <p>Next water:</p>
-                    <Dropdown
-    icon='theme'
-    text="Set Days"
-    floating
-    labeled
-    button
-    className='icon'
-  >
-    <Dropdown.Menu>
-      <Dropdown.Header content='Pick # of days' />
-      <Input iconPosition='left' name='earchs' />
-      </Dropdown.Menu>
-      </Dropdown>
+                    <Button
+                      onClick={event => this.handleWatering(event)}>
+                      Water</Button>
+                     <Modal size="mini" trigger={<Button>Change schedule</Button>}>
+                     <Form name="days" onSubmit={event => this.handleDaySubmit(event)}>
+                      <Form.Field>
+                        <label>Input number of days</label>
+                  
+                        <input  onChange={e => this.setState({wateringSchedule: e.target.value})}type="number" max={365}/>
+                      </Form.Field>
+                      <Form.Field control={Button}>Submit</Form.Field>
+                    </Form>
+                </Modal>
                 </Card.Content>
                 <Modal trigger ={<Button>Notes Log</Button>}>
                   <Modal.Header>{this.props.user_plant.name}</Modal.Header>
@@ -70,7 +81,7 @@ class UserPlantCard extends Component {
                         
                         <Form.Field control="text-area">
                           <label>Note</label>
-                          <input 
+                          <input
                           onChange={e => this.setState({note: e.target.value})}
                           name="note" />
                         <Button>Create Note</Button>
@@ -100,7 +111,8 @@ class UserPlantCard extends Component {
 
 const mapDispatchToProps = dispatch => ({
     deletingUserPlant: (userPlant) => {dispatch(deletingUserPlant(userPlant))},
-    creatingNote: (noteInfo) => {dispatch(creatingNote(noteInfo))}
+    creatingNote: (noteInfo) => {dispatch(creatingNote(noteInfo))},
+    creatingWatering: (watering) => {dispatch(creatingWatering(watering))}
 })
 
 const mapStateToProps = state => {
