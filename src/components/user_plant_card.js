@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Form, Modal, Header, Card, Image, Icon, Button, Input, Dropdown } from 'semantic-ui-react'
+import { Form, Modal, Header, Card, Image, Button} from 'semantic-ui-react'
 import { Link } from "react-router-dom"
 import { connect } from "react-redux";
 import { deletingUserPlant, updatingUserPlantSchedule } from '../redux/actions/user_plant_actions'
@@ -44,9 +44,9 @@ class UserPlantCard extends Component {
       
     }
 
-
-
     render() {
+      debugger
+
     return(
         <div>
             <Card className="plant-card">
@@ -55,8 +55,7 @@ class UserPlantCard extends Component {
                   <div className="divider"></div>
                   <h2>{this.props.user_plant.name}</h2>
                   <p className='sci-name'>{this.props.user_plant.scientific_name}</p>
-                 
-                    <p>Next water:</p>
+                    <p>Next water: {this.props.user_plant.waterings.length > 0 ? this.props.user_plant.waterings.slice(-1)[0].schedule : "Select a day"} </p>
                     <Button
                       onClick={event => this.handleWatering(event)}>
                       Water</Button>
@@ -78,7 +77,6 @@ class UserPlantCard extends Component {
                     <Modal.Description>
                       <Header>Notes Log</Header>
                       <Form onSubmit={event => this.handleSubmit(event)}>
-                        
                         <Form.Field control="text-area">
                           <label>Note</label>
                           <input
@@ -94,10 +92,6 @@ class UserPlantCard extends Component {
                     </Modal.Description>
                   </Modal.Content>
                 </Modal>
-                {/* <Modal size="mini" trigger={<Button>Change schedule</Button>}>
-                  <p> Watering schedule <SemanticDatepicker onChange={this.handleDateChange} pointing="top left"className="date-dropdown"/></p>
-                  <p> Fertilizing schedule <SemanticDatepicker onChange={this.handleDatechange} pointing="top left"className="date-dropdown"/></p> 
-                </Modal> */}
                 <Button onClick={() => {
                     this.props.deletingUserPlant(this.props.user_plant)
                 }}>Remove plant</Button>
