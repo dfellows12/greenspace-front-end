@@ -58,9 +58,12 @@ class UserPlantCard extends Component {
     lastWatering = (userplantid) => {
       if (this.props.currentWaterings.length > 0) {
         let waterings = this.props.currentWaterings.filter(watering => watering.user_plant_id === userplantid)
-        return waterings.slice(-1)[0].schedule
+        if (waterings.length > 0) {
+          return waterings.slice(-1)[0].schedule
+
+        }
+        else {return "Select a day"}
       }
-      else {return "Select a day"}
     }
 
     render() {
