@@ -58,6 +58,7 @@ function addingUserPlant(info, userId){
 }
 
 function updateUserPlant(userplant) {
+    debugger
     return {type: "UPDATE_USER_PLANT", payload: userplant}
 }
 

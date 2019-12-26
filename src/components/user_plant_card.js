@@ -40,12 +40,17 @@ class UserPlantCard extends Component {
       return this.props.creatingWatering(info)
     }
 
-    handleWatering = (event) => {
-      
+    handleWatering = () => {
+      let schedule = this.addDays(new Date(), this.props.user_plant.water_schedule)
+      let info = {
+        wateringSchedule: schedule,
+        userPlant: this.props.user_plant
+      }
+      return this.props.creatingWatering(info)
     }
 
     render() {
-      debugger
+   
 
     return(
         <div>
