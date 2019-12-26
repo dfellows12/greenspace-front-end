@@ -89,7 +89,8 @@ function updatingUserPlantSchedule(info) {
               },
               body: JSON.stringify({
                   userplant: info.userPlant,
-                  schedule: info.wateringSchedule
+                  wateringSchedule: info.wateringSchedule,
+                  fertilizingSchedule: info.fertilizingSchedule
               })
             })
         .then(resp => resp.json())

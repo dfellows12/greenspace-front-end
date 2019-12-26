@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { connect } from "react-redux";
 import { deletingUserPlant, updatingUserPlantSchedule } from '../redux/actions/user_plant_actions'
 import { creatingNote } from '../redux/actions/note_actions'
+import { creatingFertilizing } from '../redux/actions/fertilizing_actions'
 import { creatingWatering } from '../redux/actions/watering_actions'
 import Note from './note'
 
@@ -11,8 +12,8 @@ class UserPlantCard extends Component {
 
   state = {
     note: '',
-    wateringSchedule: "",
-    fertilizingSchedule: ""
+    wateringSchedule: null,
+    fertilizingSchedule: null
 }
     addDays = (theDate, days) => {
       return new Date(theDate.getTime() + days*24*60*60*1000)
@@ -31,14 +32,27 @@ class UserPlantCard extends Component {
 
     handleDaySubmit = (event) => {
       event.preventDefault()
-      let schedule = this.addDays(new Date(), this.state.wateringSchedule)
-      let info = {
-        nextWaterDate: schedule,
-        wateringSchedule: this.state.wateringSchedule,
-        userPlant: this.props.user_plant
+      if (this.state.wateringSchedule){
+        let schedule = this.addDays(new Date(), this.state.wateringSchedule)
+        let info = {
+          nextWaterDate: schedule,
+          wateringSchedule: this.state.wateringSchedule,
+          userPlant: this.props.user_plant
+        }
+        this.props.creatingWatering(info)
+        this.props.updatingUserPlantSchedule(info)
       }
-      this.props.updatingUserPlantSchedule(info)
-      return this.props.creatingWatering(info)
+      if (this.state.fertilizingSchedule){
+        let schedule = this.addDays(new Date(), this.state.fertilizingSchedule)
+        let info = {
+          nextFertilizingDate: schedule,
+          fertilizingSchedule: this.state.fertilizingSchedule,
+          userPlant: this.props.user_plant
+        }
+        this.props.creatingFertilizing(info)
+        this.props.updatingUserPlantSchedule(info)
+      }
+      
     }
 
     handleWatering = () => {
@@ -55,12 +69,37 @@ class UserPlantCard extends Component {
       }
     }
 
+    handleFertilizing = () => {
+      if (!this.props.user_plant.fertilizer_schedule) {
+        alert("Please create a fertilizing schedule")
+      }
+      else {
+        let schedule = this.addDays(new Date(), this.props.user_plant.fertilizer_schedule)
+        let info = {
+          nextFertilizingDate: schedule,
+          userPlant: this.props.user_plant
+        }
+        return this.props.creatingFertilizing(info)
+      }
+    }
+
     lastWatering = (userplantid) => {
       if (this.props.currentWaterings.length > 0) {
         let waterings = this.props.currentWaterings.filter(watering => watering.user_plant_id === userplantid)
         if (waterings.length > 0) {
           return waterings.slice(-1)[0].schedule
+        }
+        else {return "Select a day"}
+      }
+    }
 
+    lastFertilizing = (userplantid) => {
+      if (this.props.currentFertilizings.length > 0) {
+        
+        let fertilizings = this.props.currentFertilizings.filter(fertilizing => fertilizing.user_plant_id === userplantid)
+        if (fertilizings.length > 0) {
+    
+          return fertilizings.slice(-1)[0].schedule
         }
         else {return "Select a day"}
       }
@@ -76,15 +115,25 @@ class UserPlantCard extends Component {
                   <h2>{this.props.user_plant.name}</h2>
                   <p className='sci-name'>{this.props.user_plant.scientific_name}</p>
                     <p>Next water: {this.lastWatering(this.props.user_plant.id)} </p>
+                    <p>Next fertilizing: {
+                      this.lastFertilizing(this.props.user_plant.id)}</p>
                     <Button
                       onClick={event => this.handleWatering(event)}>
                       Water</Button>
+                    <Button
+                    onClick={event => this.handleFertilizing(event)}>
+                    Fertilize</Button>
                      <Modal size="mini" trigger={<Button>Change schedule</Button>}>
                      <Form name="days" onSubmit={event => this.handleDaySubmit(event)}>
                       <Form.Field>
-                        <label>Input number of days</label>
+                        <label>Input number of days between waterings</label>
                   
                         <input  onChange={e => this.setState({wateringSchedule: e.target.value})}type="number" max={365}/>
+                      </Form.Field>
+                      <Form.Field>
+                        <label>Input number of days between fertilizings</label>
+                  
+                        <input  onChange={e => this.setState({fertilizingSchedule: e.target.value})}type="number" max={365}/>
                       </Form.Field>
                       <Form.Field control={Button}>Submit</Form.Field>
                     </Form>
@@ -127,14 +176,16 @@ const mapDispatchToProps = dispatch => ({
     deletingUserPlant: (userPlant) => {dispatch(deletingUserPlant(userPlant))},
     updatingUserPlantSchedule: (info) => {dispatch(updatingUserPlantSchedule(info))},
     creatingNote: (noteInfo) => {dispatch(creatingNote(noteInfo))},
-    creatingWatering: (watering) => {dispatch(creatingWatering(watering))}
+    creatingWatering: (watering) => {dispatch(creatingWatering(watering))},
+    creatingFertilizing: (fertilizing) => {dispatch(creatingFertilizing(fertilizing))}
 })
 
 const mapStateToProps = state => {
   return {
     currentUser: state.currentUser,
     currentNotes: state.currentNotes,
-    currentWaterings: state.currentWaterings
+    currentWaterings: state.currentWaterings,
+    currentFertilizings: state.currentFertilizings
   };
 };
 

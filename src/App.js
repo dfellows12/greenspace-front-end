@@ -13,6 +13,7 @@ import { fetchingUserPlants } from "./redux/actions/user_plant_actions"
 import { fetchingPlants } from "./redux/actions/plant_actions"
 import { fetchingNotes } from "./redux/actions/note_actions"
 import { fetchingWaterings } from "./redux/actions/watering_actions"
+import { fetchingFertilizings } from "./redux/actions/fertilizing_actions"
 import './App.css';
 
 class App extends React.Component {
@@ -22,6 +23,7 @@ class App extends React.Component {
     this.props.fetchingUserPlants()
     this.props.fetchingNotes()
     this.props.fetchingWaterings()
+    this.props.fetchingFertilizings()
   }
 
   render() {
@@ -53,7 +55,8 @@ const mapDispatchToProps = (dispatch) => ({
   fetchingPlants: () => dispatch(fetchingPlants()),
   fetchingUserPlants: () => dispatch(fetchingUserPlants()),
   fetchingNotes: () => dispatch(fetchingNotes()),
-  fetchingWaterings: () => dispatch(fetchingWaterings())
+  fetchingWaterings: () => dispatch(fetchingWaterings()),
+  fetchingFertilizings: () => dispatch(fetchingFertilizings())
 })
 
 
