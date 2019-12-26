@@ -56,6 +56,14 @@ const userPlantsReducer = (currentUserPlants = [], action) => {
             else {
                 return [action.payload]
             }
+        case "UPDATE_USER_PLANT":
+            return currentUserPlants.map(userPlant => {
+                if (userPlant.id === action.payload.id) {
+                    return action.payload
+                } else {
+                    return userPlant
+                }
+            })
         default:
             return currentUserPlants
     }
@@ -72,6 +80,7 @@ const wateringsReducer = (currentWaterings = [], action) => {
             else {
                 return [action.payload]
             }
+
         default:
             return currentWaterings
     }
