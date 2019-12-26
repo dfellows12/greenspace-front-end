@@ -48,11 +48,19 @@ class UserPlantCard extends Component {
       else {
         let schedule = this.addDays(new Date(), this.props.user_plant.water_schedule)
         let info = {
-          wateringSchedule: schedule,
+          nextWaterDate: schedule,
           userPlant: this.props.user_plant
         }
         return this.props.creatingWatering(info)
       }
+    }
+
+    lastWatering = (userplantid) => {
+      if (this.props.currentWaterings.length > 0) {
+        let waterings = this.props.currentWaterings.filter(watering => watering.user_plant_id === userplantid)
+        return waterings.slice(-1)[0].schedule
+      }
+      else {return "Select a day"}
     }
 
     render() {
@@ -60,11 +68,11 @@ class UserPlantCard extends Component {
         <div>
             <Card className="plant-card">
                 <Card.Content>
-                  <img className="plant-image" src={this.props.user_plant.image_url}/>
+                  <img className="plant-image" src={this.props.user_plant.image_url} alt="plant"/>
                   <div className="divider"></div>
                   <h2>{this.props.user_plant.name}</h2>
                   <p className='sci-name'>{this.props.user_plant.scientific_name}</p>
-                    <p>Next water: {this.props.user_plant.waterings.length > 0 ? this.props.user_plant.waterings.slice(-1)[0].schedule : "Select a day"} </p>
+                    <p>Next water: {this.lastWatering(this.props.user_plant.id)} </p>
                     <Button
                       onClick={event => this.handleWatering(event)}>
                       Water</Button>
@@ -122,7 +130,8 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => {
   return {
     currentUser: state.currentUser,
-    currentNotes: state.currentNotes
+    currentNotes: state.currentNotes,
+    currentWaterings: state.currentWaterings
   };
 };
 

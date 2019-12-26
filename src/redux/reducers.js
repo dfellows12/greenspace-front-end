@@ -61,13 +61,30 @@ const userPlantsReducer = (currentUserPlants = [], action) => {
     }
 }
 
+const wateringsReducer = (currentWaterings = [], action) => {
+    switch (action.type) {
+        case "FETCH_WATERINGS":
+            return action.payload
+        case "CREATE_WATERING":
+            if (currentWaterings) {
+                return [...currentWaterings, action.payload]
+                }
+            else {
+                return [action.payload]
+            }
+        default:
+            return currentWaterings
+    }
+}
+
 
 
 const rootReducer = combineReducers({
     currentUser: userReducer,
     currentPlants: plantsReducer,
     currentUserPlants: userPlantsReducer,
-    currentNotes: notesReducer
+    currentNotes: notesReducer,
+    currentWaterings: wateringsReducer
 })
 
 export default rootReducer

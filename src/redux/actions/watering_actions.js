@@ -1,3 +1,17 @@
+function fetchedWaterings(waterings) {
+  return {type: "FETCH_WATERINGS", payload: waterings}
+}
+
+function fetchingWaterings() {
+  return (dispatch) => {
+      fetch("http://localhost:3000/waterings")
+      .then(resp => resp.json())
+      .then(result => {
+          dispatch(fetchedWaterings(result))
+      })
+  }
+}
+
 function creatingWatering(watering){
     return (dispatch) => {
       fetch(`http://localhost:3000/waterings`, {
@@ -22,4 +36,4 @@ function createWatering(watering) {
     return {type: "CREATE_WATERING", payload: watering}
 }
 
-export {creatingWatering}
+export {creatingWatering, fetchingWaterings}

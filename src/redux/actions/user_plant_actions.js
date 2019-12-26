@@ -58,7 +58,6 @@ function addingUserPlant(info, userId){
 }
 
 function updateUserPlant(userplant) {
-    debugger
     return {type: "UPDATE_USER_PLANT", payload: userplant}
 }
 
@@ -95,7 +94,6 @@ function updatingUserPlantSchedule(info) {
             })
         .then(resp => resp.json())
         .then(userPlant => {
-            debugger
             dispatch(updateUserPlant(userPlant))})
     }
 }
