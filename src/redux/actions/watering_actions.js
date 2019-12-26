@@ -7,8 +7,8 @@ function creatingWatering(watering){
           Accept: "application/json"
         },
         body: JSON.stringify({
-            user_plant_id: watering.userPlantId,
-            user_id: watering.userId,
+            user_plant_id: watering.userPlant.id,
+            user_id: watering.userPlant.user_id,
             wateringSchedule: watering.wateringSchedule
         })
       })

@@ -78,5 +78,24 @@ function updatingUserPlant(userplant) {
             dispatch(updateUserPlant(userPlant))})
     }
 }
+
+function updatingUserPlantSchedule(info) {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/user_plants/${info.userPlant.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+              },
+              body: JSON.stringify({
+                  userplant: info.userPlant,
+                  schedule: info.wateringSchedule
+              })
+            })
+        .then(resp => resp.json())
+        .then(userPlant => {
+            dispatch(updateUserPlant(userPlant))})
+    }
+}
   
-export {fetchingUserPlants, addingUserPlant, deletingUserPlant, updatingUserPlant}
+export {updatingUserPlantSchedule, fetchingUserPlants, addingUserPlant, deletingUserPlant, updatingUserPlant}

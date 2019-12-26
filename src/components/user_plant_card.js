@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { Form, Modal, Header, Card, Image, Icon, Button, Input, Dropdown } from 'semantic-ui-react'
 import { Link } from "react-router-dom"
 import { connect } from "react-redux";
-import { deletingUserPlant } from '../redux/actions/user_plant_actions'
+import { deletingUserPlant, updatingUserPlantSchedule } from '../redux/actions/user_plant_actions'
 import { creatingNote } from '../redux/actions/note_actions'
 import { creatingWatering } from '../redux/actions/watering_actions'
 import Note from './note'
@@ -34,9 +34,9 @@ class UserPlantCard extends Component {
       let schedule = this.addDays(new Date(), this.state.wateringSchedule)
       let info = {
         wateringSchedule: schedule,
-        userId: this.props.currentUser.id,
-        userPlantId: this.props.user_plant.id
+        userPlant: this.props.user_plant
       }
+      this.props.updatingUserPlantSchedule(info)
       return this.props.creatingWatering(info)
     }
 
@@ -111,6 +111,7 @@ class UserPlantCard extends Component {
 
 const mapDispatchToProps = dispatch => ({
     deletingUserPlant: (userPlant) => {dispatch(deletingUserPlant(userPlant))},
+    updatingUserPlantSchedule: (info) => {dispatch(updatingUserPlantSchedule(info))},
     creatingNote: (noteInfo) => {dispatch(creatingNote(noteInfo))},
     creatingWatering: (watering) => {dispatch(creatingWatering(watering))}
 })
