@@ -95,6 +95,7 @@ function updatingUserPlantSchedule(info) {
             })
         .then(resp => resp.json())
         .then(userPlant => {
+            debugger
             dispatch(updateUserPlant(userPlant))})
     }
 }

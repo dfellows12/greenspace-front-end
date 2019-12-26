@@ -33,7 +33,8 @@ class UserPlantCard extends Component {
       event.preventDefault()
       let schedule = this.addDays(new Date(), this.state.wateringSchedule)
       let info = {
-        wateringSchedule: schedule,
+        nextWaterDate: schedule,
+        wateringSchedule: this.state.wateringSchedule,
         userPlant: this.props.user_plant
       }
       this.props.updatingUserPlantSchedule(info)
@@ -41,17 +42,20 @@ class UserPlantCard extends Component {
     }
 
     handleWatering = () => {
-      let schedule = this.addDays(new Date(), this.props.user_plant.water_schedule)
-      let info = {
-        wateringSchedule: schedule,
-        userPlant: this.props.user_plant
+      if (!this.props.user_plant.water_schedule) {
+        alert("Please create a watering schedule")
       }
-      return this.props.creatingWatering(info)
+      else {
+        let schedule = this.addDays(new Date(), this.props.user_plant.water_schedule)
+        let info = {
+          wateringSchedule: schedule,
+          userPlant: this.props.user_plant
+        }
+        return this.props.creatingWatering(info)
+      }
     }
 
     render() {
-   
-
     return(
         <div>
             <Card className="plant-card">

@@ -9,7 +9,7 @@ function creatingWatering(watering){
         body: JSON.stringify({
             user_plant_id: watering.userPlant.id,
             user_id: watering.userPlant.user_id,
-            wateringSchedule: watering.wateringSchedule
+            wateringSchedule: watering.nextWaterDate
         })
       })
       .then(resp => resp.json())
