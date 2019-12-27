@@ -65,6 +65,7 @@ handleSubmit = e => {
                     <option value='succulent and cacti'>Succulent and Cacti</option>
                 </Form.Field>
                 <Form.Field>
+                    <label>Add image</label>
                     <input type="file" name='image'
                     onChange={this.handleOnChange} />
                 </Form.Field>
