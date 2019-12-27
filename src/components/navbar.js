@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux'
 import { Input, Menu } from 'semantic-ui-react'
-import { Link, NavLink, withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { logUserOut } from "../redux/actions/user_actions"
 
 const Navbar = props => {

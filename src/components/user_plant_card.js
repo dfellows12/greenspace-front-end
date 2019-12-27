@@ -150,7 +150,6 @@ class UserPlantCard extends Component {
                           onChange={e => this.setState({note: e.target.value})}
                           name="note" />
                         <Button className="create-note-button">Create Note</Button></div>
-
                         </Form.Field>
                       </Form>
                       <div> {this.props.currentNotes.map( note => (

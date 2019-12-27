@@ -8,7 +8,6 @@ const PlantCard = props => {
     return(
         <div>
             <Card className="plant-card">
-                {/* <Image id="plant-image" src={props.plant.image_url} wrapped ui={false} /> */}
                 <Card.Content>
                     <img className="plant-image" src={props.plant.image_url}/>
                     <div class="divider"></div>
