@@ -125,3 +125,8 @@ h2 {
   margin-top: 20px !important;
 }
 
+/* .navbar {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+} */
+

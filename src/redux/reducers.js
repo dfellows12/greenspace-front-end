@@ -19,7 +19,7 @@ const notesReducer = (currentNotes = [], action) => {
         case "FETCH_NOTES":
             return action.payload
         case "DELETE_NOTE":
-            return currentNotes.filter(note => note.id != action.payload.id)
+            return currentNotes.filter(note => note.id !== action.payload.id)
         case "CREATE_NOTE":
             if (currentNotes) {
             return [...currentNotes, action.payload]
@@ -48,7 +48,7 @@ const userPlantsReducer = (currentUserPlants = [], action) => {
         case "FETCH_USER_PLANTS":
             return action.payload
         case "DELETE_USER_PLANT":
-            return currentUserPlants.filter(userplant => userplant.id != action.payload.id)
+            return currentUserPlants.filter(userplant => userplant.id !== action.payload.id)
         case "ADD_USER_PLANT":
             if (currentUserPlants) {
             return [...currentUserPlants, action.payload]

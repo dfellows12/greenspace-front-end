@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux'
-import { Input, Menu } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
 import { Link, withRouter } from "react-router-dom";
 import { logUserOut } from "../redux/actions/user_actions"
 
@@ -20,12 +20,12 @@ const Navbar = props => {
           onClick={props.logUserOut}
           />
         </Link>
-          <Menu.Item small position='right'>
+          {/* <Menu.Item small position='right'>
           <Input
             action={{ type: 'submit', content: 'Go' }}
             placeholder='Search plants...'
           />
-          </Menu.Item>
+          </Menu.Item> */}
       </Menu>
     </div>
   );

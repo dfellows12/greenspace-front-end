@@ -1,6 +1,4 @@
 import React from "react";
-import { Button } from 'semantic-ui-react'
-import { Link } from "react-router-dom"
 import { connect } from "react-redux";
 import PlantCard from '../components/plant_card'
 
@@ -9,9 +7,7 @@ const PlantIndex = props => {
         <div>
             <h1>Add a plant</h1>
             <div className="card-container">{props.currentPlants.map(plant => (
-                
-                <PlantCard plant={plant}/>
-                
+                <PlantCard id={plant.id} plant={plant}/>           
             ))}</div>
         </div>
     )

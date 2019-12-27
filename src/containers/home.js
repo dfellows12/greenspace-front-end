@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import UserPlantCard from '../components/user_plant_card'
 import { connect } from 'react-redux'
 
@@ -32,9 +32,6 @@ const UserPlantIndex = props => {
         return finalArray
     }
 
-    // sortedKeys.forEach((key) => {
-    //     <UserPlantCard user_plant={dateHash[key]}>
-    // })
     return(
         <div>
             <h1>Your Greenspace</h1>

@@ -1,7 +1,6 @@
 import React from "react";
-import { Card, Image, Icon, Button } from 'semantic-ui-react'
+import { Card, Button } from 'semantic-ui-react'
 import { addingUserPlant } from '../redux/actions/user_plant_actions'
-import { Link } from "react-router-dom"
 import { connect } from "react-redux";
 
 const PlantCard = props => {
@@ -9,8 +8,8 @@ const PlantCard = props => {
         <div>
             <Card className="plant-card">
                 <Card.Content>
-                    <img className="plant-image" src={props.plant.image_url}/>
-                    <div class="divider"></div>
+                    <img className="plant-image" src={props.plant.image_url} alt="plant"/>
+                    <div className="divider"></div>
                     <h2>{props.plant.name}</h2>
                 
                         <p className='sci-name'>{props.plant.scientific_name}</p>
