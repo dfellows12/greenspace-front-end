@@ -22,6 +22,7 @@ const PlantCard = props => {
                 </Card.Content>
                 <Button onClick={() => {
                     props.addUserPlant(props.plant, props.currentUser.id)
+                    alert("Plant added to your GreenSpace!")
                 }}>Add plant</Button>
             </Card>
         </div>

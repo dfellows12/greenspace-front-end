@@ -41,7 +41,7 @@ handleSubmit = e => {
     return(
         <div className="form-page">
             <Form className="plant-form" onSubmit={event => this.handleSubmit(event)}>
-            <h1>Create a plant!</h1>
+            <h1>Add a plant</h1>
                 <Form.Field>
                     <label>Name</label>
                     <input 
@@ -60,6 +60,7 @@ handleSubmit = e => {
                 <Form.Field label='Category' control='select'
                     name='category'
                     onChange={this.handleOnChange}>
+                    <option value='none'>None</option>
                     <option value='flowering'>Flowering</option>
                     <option value='foliage'>Foliage</option>
                     <option value='succulent and cacti'>Succulent and Cacti</option>
