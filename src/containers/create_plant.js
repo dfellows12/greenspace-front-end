@@ -44,7 +44,7 @@ handleSubmit = e => {
             <h1>Create a plant!</h1>
                 <Form.Field>
                     <label>Name</label>
-                    <input placeholder="Name"
+                    <input 
                         name="name"
                         onChange={this.handleOnChange}/>
                 </Form.Field>
