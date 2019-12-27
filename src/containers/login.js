@@ -37,6 +37,7 @@ class Login extends Component {
                                 <label>Password</label>
                                 <input 
                                 name="password"
+                                type="password"
                                 onChange={e => this.setState({password: e.target.value})}
                                 placeholder='Password' />
                             </Form.Field>
