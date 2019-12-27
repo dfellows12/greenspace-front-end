@@ -17,7 +17,6 @@ const PlantCard = props => {
                         <span className='date'>{props.plant.scientific_name}</span>
                     </Card.Meta>
                     <Card.Description>
-                        
                     </Card.Description>
                 </Card.Content>
                 <Button onClick={() => {

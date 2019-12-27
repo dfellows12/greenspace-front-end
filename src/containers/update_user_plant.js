@@ -16,7 +16,8 @@ class UpdateUserPlant extends Component {
     }
 
     componentDidMount() {
-        fetch(`http://localhost:3000/user_plants/50`)
+        const id = this.props.id
+        fetch(`http://localhost:3000/user_plants/${id}`)
         .then(resp => resp.json())
         .then(user_plant => {
             this.setState ({
@@ -84,6 +85,7 @@ handleSubmit = e => {
                     control='select'
                     name='category'
                     onChange={this.handleOnChange}>
+                    <option value='none'>None</option>
                     <option value='flowering'>Flowering</option>
                     <option value='foliage'>Foliage</option>
                     <option value='succulent and cacti'>Succulent and Cacti</option>

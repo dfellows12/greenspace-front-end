@@ -126,12 +126,10 @@ class UserPlantCard extends Component {
                      <Form name="days" onSubmit={event => this.handleDaySubmit(event)}>
                       <Form.Field>
                         <label>Input number of days between waterings</label>
-                  
                         <input  onChange={e => this.setState({wateringSchedule: e.target.value})}type="number" max={365}/>
                       </Form.Field>
                       <Form.Field>
                         <label>Input number of days between fertilizings</label>
-                  
                         <input  onChange={e => this.setState({fertilizingSchedule: e.target.value})}type="number" max={365}/>
                       </Form.Field>
                       <Form.Field control={Button}>Submit</Form.Field>
