@@ -94,8 +94,7 @@ class UserPlantCard extends Component {
     }
 
     lastFertilizing = (userplantid) => {
-      if (this.props.currentFertilizings.length > 0) {
-        
+      if (this.props.currentFertilizings.length > 0) {  
         let fertilizings = this.props.currentFertilizings.filter(fertilizing => fertilizing.user_plant_id === userplantid)
         if (fertilizings.length > 0) {
     
