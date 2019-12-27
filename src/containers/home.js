@@ -6,8 +6,8 @@ const UserPlantIndex = props => {
     return(
         <div>
             <h1>Your Greenspace</h1>
-                <div className="card-container">{props.currentUserPlants.map(user_plant => ( 
-                    <UserPlantCard user_plant={user_plant}/>
+                <div className="card-container">{props.currentUserPlants.map(user_plant => (
+                    user_plant.user_id === props.currentUser.id ? <UserPlantCard user_plant={user_plant}/> : null
                 ))}</div>
         </div>
     )
@@ -15,7 +15,8 @@ const UserPlantIndex = props => {
 
 const mapStateToProps = state => {
     return {
-      currentUserPlants: state.currentUserPlants
+      currentUserPlants: state.currentUserPlants,
+      currentUser: state.currentUser
     }
 }
 
