@@ -8,7 +8,7 @@ const Navbar = props => {
   return (
     <div className="navbar">
       <Menu className>
-        <Link to='/'><Menu.Item header>GreenSpace</Menu.Item></Link>
+        <Link to='/'><Menu.Item header>Your GreenSpace</Menu.Item></Link>
         <Link to="/plants"><Menu.Item position='right'
           name='Add Plant'
         /></Link>

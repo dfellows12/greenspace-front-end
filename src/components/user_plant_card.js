@@ -136,25 +136,27 @@ class UserPlantCard extends Component {
                     </Form>
                 </Modal>
                 </Card.Content>
-                <Modal trigger ={<Button>Notes Log</Button>}>
+                <Modal className="note-modal"trigger ={<Button>Notes Log</Button>}>
                   <Modal.Header>{this.props.user_plant.name}</Modal.Header>
                   <Modal.Content image scrolling>
                     <Image size='medium' src={this.props.user_plant.image_url} wrapped />
-                    <Modal.Description>
+                    <Modal.Description className="note-container">
                       <Header>Notes Log</Header>
                       <Form onSubmit={event => this.handleSubmit(event)}>
                         <Form.Field control="text-area">
-                          <label>Note</label>
-                          <input
+                          <div>
+                            <input
+                          className="note-input"
                           onChange={e => this.setState({note: e.target.value})}
                           name="note" />
-                        <Button>Create Note</Button>
+                        <Button className="create-note-button">Create Note</Button></div>
+
                         </Form.Field>
                       </Form>
-                      <div> {this.props.currentNotes.map( note => {
-                        return <Note note={note} />
-                      })}
-                        </div>>
+                      <div> {this.props.currentNotes.map( note => (
+                          note.user_plant_id === this.props.user_plant.id ? <Note note={note}/> : null
+                      ))}
+                        </div>
                     </Modal.Description>
                   </Modal.Content>
                 </Modal>

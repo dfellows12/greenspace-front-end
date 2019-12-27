@@ -13,11 +13,8 @@ const PlantCard = props => {
                     <img className="plant-image" src={props.plant.image_url}/>
                     <div class="divider"></div>
                     <h2>{props.plant.name}</h2>
-                    <Card.Meta>
-                        <span className='date'>{props.plant.scientific_name}</span>
-                    </Card.Meta>
-                    <Card.Description>
-                    </Card.Description>
+                
+                        <p className='sci-name'>{props.plant.scientific_name}</p>
                 </Card.Content>
                 <Button onClick={() => {
                     props.addUserPlant(props.plant, props.currentUser.id)

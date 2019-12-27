@@ -59,9 +59,10 @@ h2 {
   text-align: center;
 }
 
-h3 {
-  
+.sci-name {
+  text-align: center;
 }
+
 
 .ui .menu {
   background-color: rgb(215, 200, 189)
@@ -106,6 +107,21 @@ h3 {
 	width: 40px;
 }
 
-.date-dropdown {
-  overflow: scroll;
+.note-container {
+  width: 60% !important;
+  margin: 10px;
+  font-size: 16px;
 }
+
+.note-input {
+  width: 74% !important;
+}
+
+.delete-note-button {
+  float: right
+}
+
+.note-text {
+  margin-top: 20px !important;
+}
+
