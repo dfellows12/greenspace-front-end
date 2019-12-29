@@ -27,6 +27,15 @@ body {
   margin-right: 15%
 }
 
+.index-title {
+  margin-top: 3% !important;
+  font-size: 65px;
+}
+
+.create-page-title {
+  font-size: 65px;
+}
+
 .searchbar {
   text-align: center;
 }

@@ -40,7 +40,7 @@ handleSubmit = e => {
     return(
         <div className="form-page">
             <Form className="plant-form" onSubmit={event => this.handleSubmit(event)}>
-            <h1>Add a plant</h1>
+            <h1 className="create-page-title">Add a plant</h1>
                 <Form.Field>
                     <label>Name</label>
                     <input 

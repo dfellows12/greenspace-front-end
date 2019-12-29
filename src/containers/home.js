@@ -36,7 +36,7 @@ const UserPlantIndex = props => {
 
     return(
         <div>
-            <h1>Your Greenspace</h1>
+            <h1 className="index-title">Your Greenspace</h1>
             <div className="searchbar">
                 <Input
                 value={props.value}

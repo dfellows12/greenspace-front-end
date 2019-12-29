@@ -7,7 +7,7 @@ import { changeIndexSearchText } from "../redux/actions/search_actions"
 const PlantIndex = props => {
     return(
         <div>
-            <h1>Add a plant</h1>
+            <h1 className="index-title">Add a plant</h1>
             <div className="searchbar">
                 <Input
                 onChange={e => props.onChange(e.target.value)}
