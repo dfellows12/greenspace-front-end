@@ -4,8 +4,10 @@ html, body {
 }
 
 body {
-  background-color: whiteSmoke;
-  font-family: "Lato";
+  /* background-color: whiteSmoke; */
+  background-color: #90B05E;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
 }
 
 .login {
@@ -29,11 +31,14 @@ body {
 
 .index-title {
   margin-top: 3% !important;
-  font-size: 65px;
+  font-size: 100px;
+
 }
 
 .create-page-title {
-  font-size: 65px;
+  font-size: 100px;
+  
+
 }
 
 .searchbar {
@@ -49,21 +54,26 @@ body {
   grid-row-gap: 0px;
 }
 
+.login-title {
+  font-size: 150px
+}
+
 .plant-form {
   grid-column-start: 2;
   grid-column-end: 3;
 }
 
 h1 {
-	font-family: 'Playfair Display SC';
-	font-size: 50px;
+	font-family: 'Amatic SC', cursive;
+	font-size: 60px;
   font-weight: 400;
   text-align: center;
   color: black;
 }
 
 h2 {
-  Font-Family: 'Droid Serif', Serif;
+  /* Font-Family: 'Droid Serif', Serif; */
+  font-family: 'Open Sans Condensed', sans-serif;
   Font-Size: 30px;
   color: black;
   text-align: center;
@@ -92,7 +102,7 @@ h2 {
   background-color: white;
 	border-radius: 1px;
 	box-shadow: 0 0 2px -1px rgba(0, 0, 0, 0.75);
-	height: 500px;
+	height: 510px;
 	max-width: 600px;
   overflow: scroll, hidden;
  
