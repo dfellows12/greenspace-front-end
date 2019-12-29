@@ -30,6 +30,10 @@ body {
   margin-right: 15%
 }
 
+.searchbar {
+  text-align: center;
+}
+
 .form-page {
   margin-top: 3%;
   display: grid;

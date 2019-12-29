@@ -1,6 +1,7 @@
 import React from 'react'
 import UserPlantCard from '../components/user_plant_card'
 import { connect } from 'react-redux'
+import { Input } from 'semantic-ui-react'
 
 const UserPlantIndex = props => {
 
@@ -35,6 +36,12 @@ const UserPlantIndex = props => {
     return(
         <div>
             <h1>Your Greenspace</h1>
+            <div className="searchbar">
+                <Input
+                action={{ type: 'submit', content: 'Go' }}
+                placeholder='Search plants...'
+            />
+            </div>
                 <div className="card-container">{sortUserPlants().map(userPlant => <UserPlantCard user_plant={userPlant}/>)}</div>
         </div>
     )
