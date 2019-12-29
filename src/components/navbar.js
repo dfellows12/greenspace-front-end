@@ -20,12 +20,6 @@ const Navbar = props => {
           onClick={props.logUserOut}
           />
         </Link>
-          {/* <Menu.Item small position='right'>
-          <Input
-            action={{ type: 'submit', content: 'Go' }}
-            placeholder='Search plants...'
-          />
-          </Menu.Item> */}
       </Menu>
     </div>
   );

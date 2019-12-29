@@ -2,6 +2,7 @@ import React from 'react'
 import UserPlantCard from '../components/user_plant_card'
 import { connect } from 'react-redux'
 import { Input } from 'semantic-ui-react'
+import { changeHomeSearchText } from "../redux/actions/search_actions"
 
 const UserPlantIndex = props => {
 
@@ -38,6 +39,8 @@ const UserPlantIndex = props => {
             <h1>Your Greenspace</h1>
             <div className="searchbar">
                 <Input
+                value={props.value}
+                onChange={e => props.onChange(e.target.value)}
                 action={{ type: 'submit', content: 'Go' }}
                 placeholder='Search plants...'
             />
@@ -50,9 +53,16 @@ const UserPlantIndex = props => {
 const mapStateToProps = state => {
     return {
       currentUserPlants: state.currentUserPlants,
-      currentUser: state.currentUser
+      currentUser: state.currentUser,
+      searchText: state.searchHomeText
     }
 }
 
-export default connect(mapStateToProps)(UserPlantIndex);
+const mapDispatchToProps = dispatch => {
+    return {
+      onChange: (searchText) => {dispatch(changeHomeSearchText(searchText))}
+    }
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserPlantIndex);
 

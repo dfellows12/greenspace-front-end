@@ -14,6 +14,24 @@ const userReducer = (state = null, action) => {
     }
 };
 
+const searchHomeTextReducer = (state = "", action) => {
+    switch (action.type) {
+        case "CHANGE_HOME_SEARCH_TEXT":
+            return action.payload;
+        default:
+            return state;
+    }
+  };
+
+  const searchIndexTextReducer = (state = "", action) => {
+    switch (action.type) {
+        case "CHANGE_INDEX_SEARCH_TEXT":
+            return action.payload;
+        default:
+            return state;
+    }
+  };
+
 const notesReducer = (currentNotes = [], action) => {
     switch (action.type) {
         case "FETCH_NOTES":
@@ -111,7 +129,10 @@ const rootReducer = combineReducers({
     currentUserPlants: userPlantsReducer,
     currentNotes: notesReducer,
     currentWaterings: wateringsReducer,
-    currentFertilizings: fertilizingsReducer
+    currentFertilizings: fertilizingsReducer,
+    searchHomeText: searchHomeTextReducer,
+    searchIndexText: searchIndexTextReducer
+
 })
 
 export default rootReducer
