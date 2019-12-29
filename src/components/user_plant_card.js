@@ -1,11 +1,14 @@
 import React, { Component } from "react"
-import { Form, Modal, Header, Card, Image, Button} from 'semantic-ui-react'
+import { Form, Modal, Header, Card, Image, Button, Icon} from 'semantic-ui-react'
 import { Link } from "react-router-dom"
 import { connect } from "react-redux";
+import { withRouter } from 'react-router-dom'
 import { deletingUserPlant, updatingUserPlantSchedule } from '../redux/actions/user_plant_actions'
 import { creatingNote } from '../redux/actions/note_actions'
 import { creatingFertilizing } from '../redux/actions/fertilizing_actions'
 import { creatingWatering } from '../redux/actions/watering_actions'
+
+
 import Note from './note'
 
 class UserPlantCard extends Component {
@@ -113,10 +116,64 @@ class UserPlantCard extends Component {
                   <div className="divider"></div>
                   <h2>{this.props.user_plant.name}</h2>
                   <p className='sci-name'>{this.props.user_plant.scientific_name}</p>
-                    <p>Next water: {this.lastWatering(this.props.user_plant.id)} </p>
-                    <p>Next fertilizing: {
+                  <div className="plant-care">
+                    <p>
+                      <Icon link onClick={event => this.handleWatering(event)} name="tint" size="big"/>
+                      Next water: {this.lastWatering(this.props.user_plant.id)} </p>
+                    <p>
+                      <Icon link onClick={event => this.handleFertilizing(event)} name="food" size="big"/>
+                      Next fertilizing: {
                       this.lastFertilizing(this.props.user_plant.id)}</p>
-                    <Button
+                  </div>
+                  <div className="card-icons">
+                      <Modal size="mini" trigger={<Icon className="card-icon" link name="calendar alternate" size="large"/>}>
+                      <Form name="days" onSubmit={event => this.handleDaySubmit(event)}>
+                      <Form.Field>
+                        <label>Input number of days between waterings</label>
+                        <input  onChange={e => this.setState({wateringSchedule: e.target.value})}type="number" max={365}/>
+                      </Form.Field>
+                      <Form.Field>
+                        <label>Input number of days between fertilizings</label>
+                        <input  onChange={e => this.setState({fertilizingSchedule: e.target.value})}type="number" max={365}/>
+                      </Form.Field>
+                      <Form.Field control={Button}>Submit</Form.Field>
+                    </Form>
+                </Modal>
+                <Icon onClick={e => this.props.history.push(`/user_plants/${this.props.user_plant.id}/edit`)}className="card-icon" link name="edit" size="large"/>
+                    <Modal trigger={<Icon className="card-icon" link name="info" size="large"/>}>
+                      <Modal.Header>Plant information</Modal.Header>
+                      <Modal.Content>
+                        <p>{this.props.user_plant.info}</p>
+                      </Modal.Content>
+                    </Modal>
+                    <Modal className="note-modal"trigger ={<Icon className="card-icon" link name="comment alternate" size="large"/>}>
+                    <Modal.Header>{this.props.user_plant.name}</Modal.Header>
+                  <Modal.Content image scrolling>
+                    <Image size='medium' src={this.props.user_plant.image_url} wrapped />
+                    <Modal.Description className="note-container">
+                      <Header>Notes Log</Header>
+                      <Form onSubmit={event => this.handleSubmit(event)}>
+                        <Form.Field control="text-area">
+                          <div>
+                            <input
+                          className="note-input"
+                          onChange={e => this.setState({note: e.target.value})}
+                          name="note" />
+                        <Button className="create-note-button">Create Note</Button></div>
+                        </Form.Field>
+                      </Form>
+                      <div> {this.props.currentNotes.map( note => (
+                          note.user_plant_id === this.props.user_plant.id ? <Note note={note}/> : null
+                      ))}
+                        </div>
+                    </Modal.Description>
+                  </Modal.Content>
+                </Modal>
+                    <Icon className="card-icon" link onClick={() => {
+                    this.props.deletingUserPlant(this.props.user_plant)}} name="close" size="large"/>
+                  </div>
+                </Card.Content>
+                    {/* <Button
                       onClick={event => this.handleWatering(event)}>
                       Water</Button>
                     <Button
@@ -162,7 +219,7 @@ class UserPlantCard extends Component {
                 <Button onClick={() => {
                     this.props.deletingUserPlant(this.props.user_plant)
                 }}>Remove plant</Button>
-                <Link to={`/user_plants/${this.props.user_plant.id}/edit`}><Button>Update plant</Button></Link>
+                <Link to={`/user_plants/${this.props.user_plant.id}/edit`}><Button>Update plant</Button></Link> */}
             </Card>
         </div>
     )
@@ -187,6 +244,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserPlantCard)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserPlantCard))
 
  

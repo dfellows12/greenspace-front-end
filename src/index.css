@@ -6,8 +6,6 @@ html, body {
 body {
   background-color: whiteSmoke;
   font-family: "Lato";
-  
- /* background-color: rgb(140, 171, 164) !important */
 }
 
 .login {
@@ -21,7 +19,6 @@ body {
   width: 100%;
   padding-bottom: 20px
 }
-
 
 .loginform {
   width: 30%;
@@ -78,21 +75,18 @@ h2 {
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 50px;
   grid-row-gap: 50px;
-  margin: 25px 20% 25px 20%;
+  margin: 25px 20% 25px 22%;
   
 }
 
-.plant-card {
-  
+.plant-card {  
   background-color: white;
 	border-radius: 1px;
 	box-shadow: 0 0 2px -1px rgba(0, 0, 0, 0.75);
-	height: 600px;
-	
+	height: 500px;
 	max-width: 600px;
-  overflow: hidden;
+  overflow: scroll, hidden;
  
-	
 	@media (max-width: 580px) {
 		height: 350px;
 		overflow: visible;
@@ -102,6 +96,11 @@ h2 {
 .plant-image {
   height: 230px;
   width: 100%
+}
+
+.info-modal {
+  margin-top: 15%;
+  text-align: center;
 }
 
 .divider {
@@ -129,8 +128,23 @@ h2 {
   margin-top: 20px !important;
 }
 
-/* .navbar {
+.card-icons {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
-} */
+  grid-template-columns: repeat(5, 1fr);
+  /* grid-column-gap: 15px; */
+  margin-top: 20px;
+  /* margin-left: 12px; */
+  text-shadow: 0 0 3px #000;
+  width: 100%;
+  text-align: center;
+}
+
+.plant-care {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.card-icon {
+  margin: auto !important;
+}
 
