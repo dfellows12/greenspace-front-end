@@ -22,6 +22,36 @@ class UserPlantCard extends Component {
       return new Date(theDate.getTime() + days*24*60*60*1000)
     }
 
+    needsFertilized = (user_plant) => {
+      if (user_plant.fertilizings.slice(-1)[0]) {
+        let last_fertilizing = Date.parse(user_plant.fertilizings.slice(-1)[0].schedule)
+        let q = new Date();
+        let m = q.getMonth()+1;
+        let d = q.getDay();
+        let y = q.getFullYear();
+        let date = new Date(y,m,d);
+        if (date > last_fertilizing) {
+          return true
+        }
+        else {return false}
+    }
+  }
+
+  needsWatering = (user_plant) => {
+    if (user_plant.waterings.slice(-1)[0]) {
+      let last_watering = Date.parse(user_plant.waterings.slice(-1)[0].schedule)
+      let q = new Date();
+      let m = q.getMonth()+1;
+      let d = q.getDay();
+      let y = q.getFullYear();
+      let date = new Date(y,m,d);
+      if (date > last_watering) {
+        return true
+      }
+      else {return false}
+  }
+}
+
     handleSubmit = (event) => {
       event.preventDefault()
       let info = {
@@ -111,7 +141,7 @@ class UserPlantCard extends Component {
     return(
         <div>
             <Card className="plant-card">
-                <Card.Content>
+                <Card.Content className={(this.needsWatering(this.props.user_plant) ? "water" : null) + " " + (this.needsFertilized(this.props.user_plant) ? "fertilize" : null)}>
                   <img className="plant-image" src={this.props.user_plant.image_url} alt="plant"/>
                   <div className="divider"></div>
                   <h2>{this.props.user_plant.name}</h2>

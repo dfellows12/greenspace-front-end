@@ -4,7 +4,6 @@ html, body {
 }
 
 body {
-  /* background-color: whiteSmoke; */
   background-color: RGB(144, 176, 171);
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
@@ -101,7 +100,9 @@ h2 {
 }
 
 .plant-card {  
-  background-color: white;
+  background-color: #36096d;
+  background-image: linear-gradient(315deg, #36096d 0%, #37d5d6 74%);
+  /* background-color: white; */
 	border-radius: 1px;
 	box-shadow: 0 0 2px -1px rgba(0, 0, 0, 0.75);
 	height: 510px;
@@ -166,37 +167,15 @@ h2 {
   margin: auto !important;
 }
 
-.gradient-border {
-  --borderWidth: 3px;
-  background: #1D1F20;
-  position: relative;
-  border-radius: var(--borderWidth);
-}
-.gradient-border:after {
-  content: '';
-  position: absolute;
-  top: calc(-1 * var(--borderWidth));
-  left: calc(-1 * var(--borderWidth));
-  height: calc(100% + var(--borderWidth) * 2);
-  width: calc(100% + var(--borderWidth) * 2);
-  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
-  border-radius: calc(2 * var(--borderWidth));
-  z-index: -1;
-  animation: animatedgradient 3s ease alternate infinite;
-  background-size: 300% 300%;
+.water {
+  background-color: #36096d important!;
+  background-image: linear-gradient(315deg, #36096d 0%, #37d5d6 74%) !important;
+} 
+
+.fertilize {
+  background-color: #fbb034 !important;
+  background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%) !important;
 }
 
-
-@keyframes animatedgradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
 
 
