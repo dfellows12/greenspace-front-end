@@ -32,7 +32,6 @@ body {
 .index-title {
   margin-top: 3% !important;
   font-size: 100px;
-
 }
 
 .create-page-title {
@@ -72,7 +71,6 @@ h1 {
 }
 
 h2 {
-  /* Font-Family: 'Droid Serif', Serif; */
   font-family: 'Open Sans Condensed', sans-serif;
   Font-Size: 30px;
   color: black;
@@ -150,9 +148,7 @@ h2 {
 .card-icons {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  /* grid-column-gap: 15px; */
   margin-top: 20px;
-  /* margin-left: 12px; */
   text-shadow: 0 0 3px #000;
   width: 100%;
   text-align: center;

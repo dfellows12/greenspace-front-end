@@ -11,7 +11,6 @@ const PlantCard = props => {
                     <img className="plant-image" src={props.plant.image_url} alt="plant"/>
                     <div className="divider"></div>
                     <h2>{props.plant.name}</h2>
-                
                         <p className='sci-name'>{props.plant.scientific_name}</p>
                         <div className="info-modal"><Modal trigger={<Icon className="card-icon" link name="info" size="large"/>}>
                       <Modal.Header>Plant information</Modal.Header>

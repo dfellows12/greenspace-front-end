@@ -118,14 +118,15 @@ class UserPlantCard extends Component {
                   <p className='sci-name'>{this.props.user_plant.scientific_name}</p>
                   <div className="plant-care">
                     <p>
-                      <Icon link onClick={event => this.handleWatering(event)} name="tint" size="big"/>
+                      <span data-tooltip="Water plant"><Icon link onClick={event => this.handleWatering(event)} name="tint" size="big"/></span>
                       Next water: {this.lastWatering(this.props.user_plant.id)} </p>
                     <p>
-                      <Icon link onClick={event => this.handleFertilizing(event)} name="food" size="big"/>
+                    <span data-tooltip="Fertilize plant"><Icon link onClick={event => this.handleFertilizing(event)} name="food" size="big"/></span>
                       Next fertilizing: {
                       this.lastFertilizing(this.props.user_plant.id)}</p>
                   </div>
                   <div className="card-icons">
+                  <span data-tooltip="Change care schedule">
                       <Modal size="mini" trigger={<Icon className="card-icon" link name="calendar alternate" size="large"/>}>
                       <Form name="days" onSubmit={event => this.handleDaySubmit(event)}>
                       <Form.Field>
@@ -139,13 +140,19 @@ class UserPlantCard extends Component {
                       <Form.Field control={Button}>Submit</Form.Field>
                     </Form>
                 </Modal>
+                </span>
+                <span data-tooltip="Edit plant">
                 <Icon onClick={e => this.props.history.push(`/user_plants/${this.props.user_plant.id}/edit`)}className="card-icon" link name="edit" size="large"/>
+                </span>
+                    <span data-tooltip="Plant information">
                     <Modal trigger={<Icon className="card-icon" link name="info" size="large"/>}>
                       <Modal.Header>Plant information</Modal.Header>
                       <Modal.Content>
                         <p>{this.props.user_plant.info}</p>
                       </Modal.Content>
                     </Modal>
+                    </span>
+                    <span data-tooltip="Comment and care log">
                     <Modal className="note-modal"trigger ={<Icon className="card-icon" link name="comment alternate" size="large"/>}>
                     <Modal.Header>{this.props.user_plant.name}</Modal.Header>
                   <Modal.Content image scrolling>
@@ -169,8 +176,11 @@ class UserPlantCard extends Component {
                     </Modal.Description>
                   </Modal.Content>
                 </Modal>
+                </span>
+                <span data-tooltip="Remove plant">
                     <Icon className="card-icon" link onClick={() => {
                     this.props.deletingUserPlant(this.props.user_plant)}} name="close" size="large"/>
+                  </span>
                   </div>
                 </Card.Content>
                     {/* <Button
