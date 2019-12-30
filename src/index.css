@@ -5,13 +5,13 @@ html, body {
 
 body {
   /* background-color: whiteSmoke; */
-  background-color: #90B05E;
+  background-color: #90B0AB;
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
 }
 
 .login {
-  background: url("./background3.jpeg") no-repeat center center fixed; 
+  background: url("./background4.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -25,7 +25,7 @@ body {
 .loginform {
   width: 30%;
   float: right;
-  margin-top: 22%;
+  margin-top: 13%;
   margin-right: 15%
 }
 
