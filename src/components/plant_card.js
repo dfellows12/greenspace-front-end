@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 const PlantCard = props => {
     return(
         <div>
-            <Card className="plant-card">
+            <Card className="plant-card gradient-border">
                 <Card.Content>
                     <img className="plant-image" src={props.plant.image_url} alt="plant"/>
                     <div className="divider"></div>
