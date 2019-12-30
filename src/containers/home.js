@@ -18,16 +18,14 @@ const UserPlantIndex = props => {
                     last_watering = Date.parse(user_plant.waterings.slice(-1)[0].schedule) }
                 if (user_plant.fertilizings.slice(-1)[0]) {
                     last_fertilizing = Date.parse(user_plant.fertilizings.slice(-1)[0].schedule) }
-                if (last_watering === null && last_fertilizing === null) {
-                    latest_date = "1000000000000000000" + user_plant.id
+                if (last_watering || last_fertilizing) {
+                    last_watering <= last_fertilizing ? latest_date = last_watering : latest_date = last_fertilizing
                 }
-                else if (last_watering >= last_fertilizing) {
-                    latest_date = last_watering     
+                else if (last_watering === null) {
+                    latest_date = "100000000000" + user_plant.id
                 }
-                else if (last_fertilizing >= last_watering) {
-                    latest_date = last_fertilizing
-                }
-                latest_date = latest_date.toString()
+                
+                latest_date = latest_date.toString() + user_plant.id
                 dateHash[latest_date] = user_plant
             }
             
