@@ -158,7 +158,7 @@ class UserPlantCard extends Component {
                   <div className="card-icons">
                   <span data-tooltip="Change care schedule">
                       <Modal size="mini" trigger={<Icon className="card-icon" link name="calendar alternate" size="large"/>}>
-                      <Form name="days" onSubmit={event => this.handleDaySubmit(event)}>
+                      <Form className="days" name="days" onSubmit={event => this.handleDaySubmit(event)}>
                       <Form.Field>
                         <label>Input number of days between waterings</label>
                         <input  onChange={e => this.setState({wateringSchedule: e.target.value})}type="number" max={365}/>
