@@ -7,15 +7,15 @@ import { logUserOut } from "../redux/actions/user_actions"
 const Navbar = props => {
   return (
     <div className="navbar">
-      <Menu className>
-        <Link to='/'><Menu.Item header>Your GreenSpace</Menu.Item></Link>
-        <Link to="/plants"><Menu.Item position='right'
+      <Menu className="navbar">
+        <Link to='/'><Menu.Item className="navbar" header>Your GreenSpace</Menu.Item></Link>
+        <Link to="/plants"><Menu.Item className="navbar" position='right'
           name='Add Plant'
         /></Link>
-        <Link to="/plants/create"><Menu.Item small position='right'
+        <Link to="/plants/create"><Menu.Item className="navbar" small position='right'
           name='Create Plant'
         /></Link>
-        <Link to="/"><Menu.Item small position='right'
+        <Link to="/"><Menu.Item className="navbar" small position='right'
           name='Log out'
           onClick={props.logUserOut}
           />

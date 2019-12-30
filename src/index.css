@@ -5,7 +5,7 @@ html, body {
 
 body {
   /* background-color: whiteSmoke; */
-  background-color: #90B0AB;
+  background-color: RGB(144, 176, 171);
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
 }
@@ -53,6 +53,10 @@ body {
   grid-row-gap: 0px;
 }
 
+.navbar {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
 .login-title {
   font-size: 150px
 }
@@ -149,7 +153,6 @@ h2 {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   margin-top: 20px;
-  text-shadow: 0 0 3px #000;
   width: 100%;
   text-align: center;
 }
