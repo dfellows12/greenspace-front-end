@@ -24,8 +24,9 @@ const PlantIndex = props => {
 
 const mapStateToProps = state => {
     return {
-      currentPlants: state.currentPlants,
-      searchText: state.searchIndexText
+      currentPlants: state.currentPlants.filter(
+          p => p.name.toLowerCase().includes(state.searchIndexText.toLowerCase())
+      )
     }
 }
 
