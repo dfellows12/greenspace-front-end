@@ -15,17 +15,16 @@ function fetchingPlants() {
 }
 
 function createPlant(plant) {
-    debugger
     return {type: "CREATE_PLANT", payload: plant}
 }
 
-let uploadFile = (file, plant) => {
+let uploadFile = (file, plant, dispatch) => {
     const upload = new DirectUpload(file, 'http://localhost:3000/rails/active_storage/direct_uploads')
     upload.create((error, blob) => {
         if (error) {
             console.log(error)
         } else {
-            return (dispatch) => {
+
             fetch(`http://localhost:3000/plants/${plant.id}`, {
                 method: 'PUT',
                 headers: {
@@ -36,7 +35,7 @@ let uploadFile = (file, plant) => {
             })
             .then(resp => resp.json())
             .then(plant => dispatch(createPlant(plant)))
-        }}
+        }
     })
 }
 
@@ -52,7 +51,7 @@ function creatingPlant(info) {
             body: JSON.stringify({info})
         })
         .then(resp => resp.json())
-        .then(plant =>  uploadFile(file, plant))     
+        .then(plant =>  uploadFile(file, plant, dispatch))     
     }
 }
 
