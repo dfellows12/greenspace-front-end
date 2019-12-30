@@ -183,53 +183,6 @@ class UserPlantCard extends Component {
                   </span>
                   </div>
                 </Card.Content>
-                    {/* <Button
-                      onClick={event => this.handleWatering(event)}>
-                      Water</Button>
-                    <Button
-                    onClick={event => this.handleFertilizing(event)}>
-                    Fertilize</Button>
-                     <Modal size="mini" trigger={<Button>Change schedule</Button>}>
-                     <Form name="days" onSubmit={event => this.handleDaySubmit(event)}>
-                      <Form.Field>
-                        <label>Input number of days between waterings</label>
-                        <input  onChange={e => this.setState({wateringSchedule: e.target.value})}type="number" max={365}/>
-                      </Form.Field>
-                      <Form.Field>
-                        <label>Input number of days between fertilizings</label>
-                        <input  onChange={e => this.setState({fertilizingSchedule: e.target.value})}type="number" max={365}/>
-                      </Form.Field>
-                      <Form.Field control={Button}>Submit</Form.Field>
-                    </Form>
-                </Modal>
-                </Card.Content>
-                <Modal className="note-modal"trigger ={<Button>Notes Log</Button>}>
-                  <Modal.Header>{this.props.user_plant.name}</Modal.Header>
-                  <Modal.Content image scrolling>
-                    <Image size='medium' src={this.props.user_plant.image_url} wrapped />
-                    <Modal.Description className="note-container">
-                      <Header>Notes Log</Header>
-                      <Form onSubmit={event => this.handleSubmit(event)}>
-                        <Form.Field control="text-area">
-                          <div>
-                            <input
-                          className="note-input"
-                          onChange={e => this.setState({note: e.target.value})}
-                          name="note" />
-                        <Button className="create-note-button">Create Note</Button></div>
-                        </Form.Field>
-                      </Form>
-                      <div> {this.props.currentNotes.map( note => (
-                          note.user_plant_id === this.props.user_plant.id ? <Note note={note}/> : null
-                      ))}
-                        </div>
-                    </Modal.Description>
-                  </Modal.Content>
-                </Modal>
-                <Button onClick={() => {
-                    this.props.deletingUserPlant(this.props.user_plant)
-                }}>Remove plant</Button>
-                <Link to={`/user_plants/${this.props.user_plant.id}/edit`}><Button>Update plant</Button></Link> */}
             </Card>
         </div>
     )
