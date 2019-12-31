@@ -72,16 +72,31 @@ class UserPlantCard extends Component {
           wateringSchedule: this.state.wateringSchedule,
           userPlant: this.props.user_plant
         }
+        let noteInfo = {
+          note: "Watered",
+          userId: this.props.currentUser.id,
+          userPlantId: this.props.user_plant.id
+        }
+     
+        this.props.creatingNote(noteInfo)
         this.props.creatingWatering(info)
         this.props.updatingUserPlantSchedule(info)
       }
       if (this.state.fertilizingSchedule){
         let schedule = this.addDays(new Date(), this.state.fertilizingSchedule)
+        
         let info = {
           nextFertilizingDate: schedule,
           fertilizingSchedule: this.state.fertilizingSchedule,
           userPlant: this.props.user_plant
         }
+        let noteInfo = {
+          note: "Fertilized",
+          userId: this.props.currentUser.id,
+          userPlantId: this.props.user_plant.id
+        }
+     
+        this.props.creatingNote(noteInfo)
         this.props.creatingFertilizing(info)
         this.props.updatingUserPlantSchedule(info)
       }
@@ -98,6 +113,13 @@ class UserPlantCard extends Component {
           nextWaterDate: schedule,
           userPlant: this.props.user_plant
         }
+        let noteInfo = {
+          note: "Watered",
+          userId: this.props.currentUser.id,
+          userPlantId: this.props.user_plant.id
+        }
+     
+        this.props.creatingNote(noteInfo)
         return this.props.creatingWatering(info)
       }
     }
@@ -112,6 +134,13 @@ class UserPlantCard extends Component {
           nextFertilizingDate: schedule,
           userPlant: this.props.user_plant
         }
+        let noteInfo = {
+          note: "Fertilized",
+          userId: this.props.currentUser.id,
+          userPlantId: this.props.user_plant.id
+        }
+     
+        this.props.creatingNote(noteInfo)
         return this.props.creatingFertilizing(info)
       }
     }

@@ -26,7 +26,6 @@ class CreateUser extends Component {
         return (
                 <div className="login">
                     <div className="loginform">
-                        <h2>Create your own</h2>
                         <h1>Create your GreenSpace account</h1>
                         <Form onSubmit={event => this.handleSubmit(event)}>
                             <Form.Field>
