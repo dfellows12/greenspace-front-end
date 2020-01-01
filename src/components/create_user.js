@@ -22,6 +22,10 @@ class CreateUser extends Component {
 
       };
 
+    handleClick = e => {
+        this.props.history.push('/')
+    }
+
     render() {
         return (
                 <div className="login">
@@ -58,7 +62,7 @@ class CreateUser extends Component {
                                 placeholder='Phone Number' />
                             </Form.Field>
                            <Button type='submit'>Submit</Button>
-                            <button className="ui black inverted basic button">Back to login</button>              
+                            <button onClick={this.handleClick}className="ui black inverted basic button">Back to login</button>              
                         </Form>
                     </div>
                 </div>
