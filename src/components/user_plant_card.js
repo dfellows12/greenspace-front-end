@@ -25,12 +25,8 @@ class UserPlantCard extends Component {
     needsFertilized = (user_plant) => {
       if (user_plant.fertilizings.slice(-1)[0]) {
         let last_fertilizing = Date.parse(user_plant.fertilizings.slice(-1)[0].schedule)
-        let q = new Date();
-        let m = q.getMonth()+1;
-        let d = q.getDay();
-        let y = q.getFullYear();
-        let date = new Date(y,m,d);
-        if (date > last_fertilizing) {
+        let date = new Date();
+        if (Date.parse(date) > last_fertilizing) {
           return true
         }
         else {return false}
@@ -40,12 +36,9 @@ class UserPlantCard extends Component {
   needsWatering = (user_plant) => {
     if (user_plant.waterings.slice(-1)[0]) {
       let last_watering = Date.parse(user_plant.waterings.slice(-1)[0].schedule)
-      let q = new Date();
-      let m = q.getMonth()+1;
-      let d = q.getDay();
-      let y = q.getFullYear();
-      let date = new Date(y,m,d);
+      let date = new Date();
       if (date > last_watering) {
+        debugger
         return true
       }
       else {return false}

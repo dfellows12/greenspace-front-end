@@ -46,7 +46,6 @@ function loggingUser(info){
       })
     .then(resp => resp.json())
     .then(resp => {
-        debugger
         if (resp.message === "User/Password not found") {
             alert("Username/Password invalid")
         }
