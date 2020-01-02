@@ -99,7 +99,8 @@ h2 {
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 50px;
   grid-row-gap: 50px;
-  margin: 25px 20% 25px 22%;
+  margin-left: 7vw;
+  margin-top: 10vh;
   
 }
 
