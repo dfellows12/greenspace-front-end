@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import { Form, Modal, Header, Card, Image, Button, Icon} from 'semantic-ui-react'
-import { Link } from "react-router-dom"
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom'
 import { deletingUserPlant, updatingUserPlantSchedule } from '../redux/actions/user_plant_actions'
@@ -38,7 +37,6 @@ class UserPlantCard extends Component {
       let last_watering = Date.parse(user_plant.waterings.slice(-1)[0].schedule)
       let date = new Date();
       if (date > last_watering) {
-        debugger
         return true
       }
       else {return false}
