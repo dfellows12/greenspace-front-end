@@ -1,0 +1,183 @@
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background-color: RGB(144, 176, 171);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+.days {
+  margin: 20px !important;
+}
+
+.login {
+  background: url("./background4.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+  padding-bottom: 20px
+}
+
+.loginform {
+  width: 30%;
+  float: right;
+  margin-top: 8%;
+  margin-right: 15%
+}
+
+.index-title {
+  margin-top: 3% !important;
+  font-size: 100px;
+}
+
+.create-page-title {
+  font-size: 100px;
+  
+
+}
+
+.searchbar {
+  text-align: center;
+}
+
+.form-page {
+  margin-top: 3%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.navbar {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+.login-title {
+  font-size: 150px
+}
+
+.plant-form {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+h1 {
+	font-family: 'Amatic SC', cursive;
+	font-size: 60px;
+  font-weight: 400;
+  text-align: center;
+  color: black;
+}
+
+h2 {
+  font-family: 'Open Sans Condensed', sans-serif;
+  Font-Size: 30px;
+  color: black;
+  text-align: center;
+}
+
+.sci-name {
+  text-align: center;
+}
+
+
+.ui .menu {
+  background-color: rgb(215, 200, 189)
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 50px;
+  grid-row-gap: 50px;
+  margin-left: 7vw;
+  margin-top: 10vh;
+  
+}
+
+.plant-card {  
+  background-color: white;
+	border-radius: 1px;
+	box-shadow: 0 0 2px -1px rgba(0, 0, 0, 0.75);
+	height: 510px;
+	max-width: 600px;
+ 
+	@media (max-width: 580px) {
+		height: 350px;
+		overflow: visible;
+	}
+}
+
+.plant-image {
+  height: 230px;
+  width: 100%
+}
+
+.info-modal {
+  margin-top: 15%;
+  text-align: center;
+}
+
+.divider {
+	background: grey;
+	height: 2px;
+	margin: 25px auto;
+	width: 40px;
+}
+
+.note-container {
+  width: 60% !important;
+  margin: 10px;
+  font-size: 16px;
+}
+
+.note-input {
+  width: 74% !important;
+}
+
+.delete-note-button {
+  float: right
+}
+
+.note-text {
+  margin-top: 20px !important;
+}
+
+.card-icons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.plant-care {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.card-icon {
+  margin: auto !important;
+}
+
+.water {
+  background-color: #36096d important!;
+  background-image: linear-gradient(315deg, #36096d 0%, #37d5d6 74%) !important;
+} 
+
+.fertilize {
+  background-color: #fbb034 !important;
+  background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%) !important;
+}
+
+
+
