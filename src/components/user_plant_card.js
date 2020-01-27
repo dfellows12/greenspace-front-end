@@ -14,8 +14,8 @@ class UserPlantCard extends Component {
 
   state = {
     note: '',
-    wateringSchedule: null,
-    fertilizingSchedule: null
+    wateringSchedule: '',
+    fertilizingSchedule: ''
 }
     addDays = (theDate, days) => {
       return new Date(theDate.getTime() + days*24*60*60*1000)
@@ -90,6 +90,9 @@ class UserPlantCard extends Component {
         this.props.creatingNote(noteInfo)
         this.props.creatingFertilizing(info)
         this.props.updatingUserPlantSchedule(info)
+        alert("Schedule updated!")
+        this.setState({wateringSchedule: '', fertilizingSchedule: ''})
+        
       }
       
     }
@@ -130,7 +133,6 @@ class UserPlantCard extends Component {
           userId: this.props.currentUser.id,
           userPlantId: this.props.user_plant.id
         }
-     
         this.props.creatingNote(noteInfo)
         return this.props.creatingFertilizing(info)
       }
@@ -181,11 +183,11 @@ class UserPlantCard extends Component {
                       <Form className="days" name="days" onSubmit={event => this.handleDaySubmit(event)}>
                       <Form.Field>
                         <label>Input number of days between waterings</label>
-                        <input  onChange={e => this.setState({wateringSchedule: e.target.value})}type="number" max={365}/>
+                        <input  value={this.state.wateringSchedule}onChange={e => this.setState({wateringSchedule: e.target.value})}type="number" max={365}/>
                       </Form.Field>
                       <Form.Field>
                         <label>Input number of days between fertilizings</label>
-                        <input  onChange={e => this.setState({fertilizingSchedule: e.target.value})}type="number" max={365}/>
+                        <input  value={this.state.fertilizingSchedule}onChange={e => this.setState({fertilizingSchedule: e.target.value})}type="number" max={365}/>
                       </Form.Field>
                       <Form.Field control={Button}>Submit</Form.Field>
                     </Form>

@@ -38,7 +38,6 @@ function deletingNote(note){
 }
 
 function creatingNote(note, userPlantId, userId){
-    debugger
     return (dispatch) => {
       fetch(`http://localhost:3000/notes`, {
         method: "POST",
