@@ -38,7 +38,6 @@ class CreateUser extends Component {
                                 name="username"
                                 onChange={e => this.setState({name: e.target.value})}
                                 placeholder='Username' />
-    
                             </Form.Field>
                             <Form.Field>
                                 <label>Password</label>
