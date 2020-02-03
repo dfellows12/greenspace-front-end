@@ -13,6 +13,7 @@ import Note from './note'
 class UserPlantCard extends Component {
 
   state = {
+    updated: '',
     note: '',
     wateringSchedule: '',
     fertilizingSchedule: ''
@@ -112,8 +113,10 @@ class UserPlantCard extends Component {
           userId: this.props.currentUser.id,
           userPlantId: this.props.user_plant.id
         }
-     
+        this.setState({updated: ''})
         this.props.creatingNote(noteInfo)
+        this.props.updatingUserPlantSchedule(info)
+
         return this.props.creatingWatering(info)
       }
     }
@@ -134,6 +137,8 @@ class UserPlantCard extends Component {
           userPlantId: this.props.user_plant.id
         }
         this.props.creatingNote(noteInfo)
+        this.props.updatingUserPlantSchedule(info)
+        this.setState({updated: ''})
         return this.props.creatingFertilizing(info)
       }
     }
