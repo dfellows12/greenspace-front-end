@@ -97,9 +97,9 @@ h2 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 50px;
-  grid-row-gap: 50px;
-  margin-left: 7vw;
+  grid-column-gap: 30px;
+  grid-row-gap: 5vw;
+  margin-left: 8vw;
   margin-top: 10vh;
   
 }
