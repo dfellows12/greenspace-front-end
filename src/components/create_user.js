@@ -38,7 +38,6 @@ class CreateUser extends Component {
                                 name="username"
                                 onChange={e => this.setState({name: e.target.value})}
                                 placeholder='Username' />
-    
                             </Form.Field>
                             <Form.Field>
                                 <label>Password</label>
@@ -53,13 +52,6 @@ class CreateUser extends Component {
                                 name="email"
                                 onChange={e => this.setState({email: e.target.value})}
                                 placeholder='Email' />
-                            </Form.Field>
-                            <Form.Field>
-                                <label>Phone Number</label>
-                                <input 
-                                name="phone_number"
-                                onChange={e => this.setState({phone_number: e.target.value})}
-                                placeholder='Phone Number' />
                             </Form.Field>
                            <Button type='submit'>Submit</Button>
                             <button onClick={this.handleClick}className="ui black inverted basic button">Back to login</button>              
