@@ -13,6 +13,8 @@ import Note from './note'
 class UserPlantCard extends Component {
 
   state = {
+    water: false,
+    fertilize: true,
     note: '',
     wateringSchedule: '',
     fertilizingSchedule: ''
@@ -26,7 +28,7 @@ class UserPlantCard extends Component {
         let last_fertilizing = Date.parse(user_plant.fertilizings.slice(-1)[0].schedule)
         let date = new Date();
         if (Date.parse(date) > last_fertilizing) {
-          return true
+          this.setState({fertilize: true})
         }
         else {return false}
     }
@@ -37,7 +39,7 @@ class UserPlantCard extends Component {
       let last_watering = Date.parse(user_plant.waterings.slice(-1)[0].schedule)
       let date = new Date();
       if (date > last_watering) {
-        return true
+        this.setState({water: true})
       }
       else {return false}
   }
@@ -163,7 +165,7 @@ class UserPlantCard extends Component {
     return(
         <div>
             <Card className="plant-card">
-                <Card.Content className={(this.needsWatering(this.props.user_plant) ? "water" : null) + " " + (this.needsFertilized(this.props.user_plant) ? "fertilize" : null)}>
+                <Card.Content className={(this.state.water ? "water" : null) + " " + (this.state.fertilize ? "fertilize" : null)}>
                   <img className="plant-image" src={this.props.user_plant.image_url} alt="plant"/>
                   <div className="divider"></div>
                   <h2>{this.props.user_plant.name}</h2>
