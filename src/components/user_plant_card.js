@@ -14,11 +14,15 @@ class UserPlantCard extends Component {
 
   state = {
     water: false,
-    fertilize: true,
+    fertilize: false,
     note: '',
     wateringSchedule: '',
     fertilizingSchedule: ''
 }
+    componentDidMount() {
+      this.needsFertilized(this.props.user_plant)
+      this.needsWatering(this.props.user_plant)
+    }
     addDays = (theDate, days) => {
       return new Date(theDate.getTime() + days*24*60*60*1000)
     }
@@ -114,7 +118,8 @@ class UserPlantCard extends Component {
           userId: this.props.currentUser.id,
           userPlantId: this.props.user_plant.id
         }
-        this.setState({updated: ''})
+      
+        this.needsWatering(this.props.user_plant)
         this.props.creatingNote(noteInfo)
         this.props.updatingUserPlantSchedule(info)
 
@@ -139,7 +144,7 @@ class UserPlantCard extends Component {
         }
         this.props.creatingNote(noteInfo)
         this.props.updatingUserPlantSchedule(info)
-        this.setState({updated: ''})
+        this.needsFertilized(this.props.user_plant)
         return this.props.creatingFertilizing(info)
       }
     }

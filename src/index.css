@@ -28,7 +28,7 @@ body {
 .loginform {
   width: 30%;
   float: right;
-  margin-top: 8%;
+  margin-top: 14%;
   margin-right: 15%
 }
 
@@ -97,9 +97,9 @@ h2 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 30px;
+  grid-column-gap: 20px;
   grid-row-gap: 5vw;
-  margin-left: 8vw;
+  margin-left: 12vw;
   margin-top: 10vh;
   
 }
